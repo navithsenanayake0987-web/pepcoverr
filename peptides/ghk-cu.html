@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GHK-Cu — Evidence, Dosage & Community Reports | PepCover</title>
+<meta name="description" content="Evidence-based research on GHK-Cu — science score, community reports, legal status, dosage guidance, and side effects. No affiliate links.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://3dmol.csb.pitt.edu/build/3Dmol-min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#FAFAF8;--bg-card:#FFFFFF;--bg-subtle:#F4F4F0;--text:#1C1C1A;--text-muted:#6B6B65;--text-faint:#A0A09A;--accent:#0F6E56;--accent-light:#E1F5EE;--accent-mid:#1D9E75;--border:#E4E4DE;--border-strong:#CECEC6;--score-green:#1D9E75;--score-amber:#BA7517;--score-red:#A32D2D;--radius:10px;--radius-sm:6px;--sidebar:280px}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',-apple-system,sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(250,250,248,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;height:60px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:'Lora',serif;font-size:20px;font-weight:600;color:var(--text);text-decoration:none}
+.nav-logo span{color:var(--accent)}
+.nav-links{display:flex;align-items:center;gap:2rem;list-style:none}
+.nav-links a{font-size:14px;color:var(--text-muted);text-decoration:none;transition:color 0.15s}
+.nav-links a:hover{color:var(--text)}
+.nav-cta{background:var(--text);color:#fff!important;padding:8px 18px;border-radius:var(--radius-sm);font-size:13px!important;font-weight:500}
+.breadcrumb{max-width:1100px;margin:0 auto;padding:16px 2rem 0;display:flex;align-items:center;gap:6px;font-size:13px;color:var(--text-faint)}
+.breadcrumb a{color:var(--text-faint);text-decoration:none}
+.breadcrumb a:hover{color:var(--accent)}
+.molecule-hero{max-width:1100px;margin:0 auto;padding:24px 2rem 0}
+.molecule-container{width:100%;height:360px;border-radius:var(--radius);border:1px solid var(--border);background:linear-gradient(135deg, #2d1b4e 0%, #4a2040 40%, #8b3a5c 70%, #c4617a 100%);position:relative;overflow:hidden}
+#molecule-viewer{width:100%;height:100%}
+.molecule-overlay{position:absolute;bottom:0;left:0;right:0;padding:24px 28px;background:linear-gradient(to top,rgba(7,15,28,0.95) 0%,rgba(7,15,28,0.5) 55%,transparent 100%);display:flex;justify-content:space-between;align-items:flex-end;pointer-events:none;z-index:10}
+.molecule-info{pointer-events:none}
+.molecule-formula{font-size:12px;color:rgba(255,255,255,0.4);letter-spacing:1px;margin-bottom:6px}
+.molecule-name{font-family:'Lora',serif;font-size:40px;font-weight:600;color:#fff;letter-spacing:-0.5px;line-height:1.1;margin-bottom:4px}
+.molecule-sub{font-size:14px;color:rgba(255,255,255,0.45);font-weight:300}
+.molecule-controls{display:flex;gap:6px;pointer-events:all;z-index:11}
+.style-btn{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.7);padding:6px 14px;border-radius:100px;font-size:12px;font-family:'DM Sans',sans-serif;cursor:pointer;transition:background 0.15s}
+.style-btn:hover{background:rgba(255,255,255,0.16)}
+.style-btn.active{background:var(--accent);border-color:var(--accent);color:#fff}
+.molecule-hint{position:absolute;top:14px;right:14px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:var(--radius-sm);padding:5px 11px;font-size:11px;color:rgba(255,255,255,0.35);pointer-events:none;z-index:10}
+.molecule-loading{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;z-index:5;pointer-events:none}
+.loading-spinner{width:30px;height:30px;border:2px solid rgba(255,255,255,0.08);border-top-color:var(--accent-mid);border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 10px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loading-text{font-size:13px;color:rgba(255,255,255,0.35);font-weight:300}
+.page-layout{max-width:1100px;margin:0 auto;padding:40px 2rem 80px;display:grid;grid-template-columns:1fr var(--sidebar);gap:48px;align-items:start}
+.main-content{min-width:0}
+.quick-stats{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px}
+.quick-stat{display:flex;align-items:center;gap:6px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:8px 14px;font-size:13px}
+.quick-stat-dot{width:7px;height:7px;border-radius:50%}
+.dot-amber{background:#EF9F27}.dot-green{background:var(--score-green)}.dot-blue{background:#378ADD}
+.quick-stat-label{color:var(--text-faint)}.quick-stat-value{font-weight:500}
+.section-label{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:1.2px;color:var(--accent);margin-bottom:8px}
+.content-section{margin-bottom:48px;padding-bottom:48px;border-bottom:1px solid var(--border)}
+.content-section:last-child{border-bottom:none;margin-bottom:0}
+.content-section h2{font-family:'Lora',serif;font-size:24px;font-weight:600;letter-spacing:-0.3px;margin-bottom:16px}
+.content-section p{color:var(--text-muted);line-height:1.75;font-weight:300;margin-bottom:16px}
+.content-section p:last-child{margin-bottom:0}
+.study-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:20px 22px;margin-bottom:12px}
+.study-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:10px}
+.study-title{font-size:14px;font-weight:500;line-height:1.4}
+.evidence-badge{font-size:11px;font-weight:500;padding:3px 9px;border-radius:100px;white-space:nowrap;flex-shrink:0}
+.badge-limited{background:#F4F4F0;color:var(--text-muted);border:1px solid var(--border)}
+.badge-moderate{background:#FAEEDA;color:#854F0B;border:1px solid #FAC775}
+.badge-strong{background:var(--accent-light);color:var(--accent);border:1px solid #9FE1CB}
+.study-meta{font-size:12px;color:var(--text-faint);margin-bottom:8px}
+.study-finding{font-size:13px;color:var(--text-muted);line-height:1.6;font-weight:300}
+.study-link{display:inline-block;margin-top:8px;font-size:12px;color:var(--accent);text-decoration:none}
+.study-link:hover{text-decoration:underline}
+.use-cases{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+.use-case-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:18px 20px}
+.use-case-icon{font-size:20px;margin-bottom:8px}
+.use-case-title{font-size:14px;font-weight:500;margin-bottom:4px}
+.use-case-desc{font-size:13px;color:var(--text-muted);font-weight:300;line-height:1.5}
+.use-case-evidence{font-size:11px;color:var(--text-faint);margin-top:8px}
+.dosage-table{width:100%;border-collapse:collapse;font-size:14px}
+.dosage-table th{text-align:left;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:0.6px;color:var(--text-faint);padding:0 16px 10px;border-bottom:1px solid var(--border)}
+.dosage-table td{padding:12px 16px;border-bottom:1px solid var(--border);vertical-align:middle;color:var(--text-muted)}
+.dosage-table td:first-child{font-weight:500;color:var(--text)}
+.dosage-table tr:last-child td{border-bottom:none}
+.side-effects-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.side-effect-item{display:flex;align-items:flex-start;gap:10px;padding:14px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);font-size:13px}
+.side-effect-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:4px}
+.side-effect-name{font-weight:500;margin-bottom:2px}
+.side-effect-freq{font-size:12px;color:var(--text-faint)}
+.stack-grid{display:flex;gap:10px;flex-wrap:wrap}
+.stack-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 16px;text-decoration:none;color:inherit;transition:border-color 0.15s;display:flex;align-items:center;gap:8px}
+.stack-card:hover{border-color:var(--accent)}
+.stack-card-name{font-size:14px;font-weight:500}
+.stack-card-purpose{font-size:12px;color:var(--text-faint)}
+.disclaimer{background:#FAEEDA;border:1px solid #FAC775;border-radius:var(--radius);padding:16px 20px;font-size:13px;color:#854F0B;line-height:1.6;margin-top:16px}
+.community-bars{display:flex;flex-direction:column;gap:12px;margin-bottom:16px}
+.community-bar-row{font-size:13px}
+.community-bar-top{display:flex;justify-content:space-between;margin-bottom:5px}
+.community-bar-label{color:var(--text-muted);font-weight:300}
+.community-bar-pct{font-weight:500}
+.community-bar-track{height:6px;background:var(--bg-subtle);border-radius:3px;overflow:hidden}
+.community-bar-fill{height:100%;border-radius:3px}
+.report-count{background:var(--bg-subtle);border-radius:var(--radius-sm);padding:12px 16px;display:flex;justify-content:space-between;align-items:center;font-size:13px;margin-top:16px}
+.report-count-num{font-family:'Lora',serif;font-size:22px;font-weight:600}
+.sidebar{position:sticky;top:80px}
+.score-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:22px;margin-bottom:16px}
+.score-card h3{font-size:13px;font-weight:500;color:var(--text-muted);margin-bottom:16px;text-transform:uppercase;letter-spacing:0.5px}
+.big-score{text-align:center;padding:16px 0}
+.big-score-num{font-family:'Lora',serif;font-size:52px;font-weight:600;line-height:1;margin-bottom:4px}
+.big-score-label{font-size:12px;color:var(--text-faint);margin-bottom:12px}
+.big-score-bar{height:6px;background:var(--bg-subtle);border-radius:3px;overflow:hidden;margin-bottom:8px}
+.big-score-fill{height:100%;border-radius:3px}
+.big-score-sub{font-size:12px;color:var(--text-faint)}
+.score-divider{height:1px;background:var(--border);margin:16px 0}
+.score-breakdown{display:flex;flex-direction:column;gap:8px}
+.breakdown-row{display:flex;justify-content:space-between;align-items:center;font-size:13px}
+.breakdown-label{color:var(--text-muted);font-weight:300}
+.breakdown-value{font-weight:500}
+.status-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:22px;margin-bottom:16px}
+.status-card h3{font-size:13px;font-weight:500;color:var(--text-muted);margin-bottom:16px;text-transform:uppercase;letter-spacing:0.5px}
+.status-item{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);font-size:13px}
+.status-item:last-child{border-bottom:none;padding-bottom:0}
+.status-item:first-child{padding-top:0}
+.status-item-label{color:var(--text-muted);font-weight:300}
+.status-pill{font-size:11px;font-weight:500;padding:3px 9px;border-radius:100px}
+.pill-pending{background:#FAEEDA;color:#854F0B}
+.pill-yes{background:#FCEBEB;color:#A32D2D}
+.pill-no{background:var(--accent-light);color:var(--accent)}
+.pill-review{background:#E6F1FB;color:#185FA5}
+.pill-category2{background:#FAEEDA;color:#854F0B}
+.updated-badge{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-faint);margin-top:12px}
+.updated-dot{width:6px;height:6px;background:var(--score-green);border-radius:50%}
+.toc-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:22px}
+.toc-card h3{font-size:13px;font-weight:500;color:var(--text-muted);margin-bottom:14px;text-transform:uppercase;letter-spacing:0.5px}
+.toc-list{list-style:none;display:flex;flex-direction:column;gap:2px}
+.toc-list a{display:block;font-size:13px;color:var(--text-muted);text-decoration:none;padding:6px 8px;border-radius:var(--radius-sm);transition:background 0.15s,color 0.15s;font-weight:300}
+.toc-list a:hover{background:var(--bg-subtle);color:var(--text)}
+.toc-list a.active{background:var(--accent-light);color:var(--accent);font-weight:500}
+.score-green{color:var(--score-green)}.score-amber{color:var(--score-amber)}.score-red{color:var(--score-red)}
+@media(max-width:800px){.page-layout{grid-template-columns:1fr}.sidebar{position:static}.use-cases,.side-effects-grid{grid-template-columns:1fr}.nav-links{display:none}.molecule-name{font-size:28px}.molecule-controls{display:none}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="nav-logo">Pep<span>Cover</span></a>
+  <ul class="nav-links">
+    <li><a href="/peptides">Peptides</a></li>
+    <li><a href="/regulation">Regulation</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/pro" class="nav-cta">Get Pro</a></li>
+  </ul>
+</nav>
+<div class="breadcrumb">
+  <a href="/">Home</a><span style="color:var(--text-faint)">›</span>
+  <a href="/peptides">Peptides</a><span style="color:var(--text-faint)">›</span>
+  <span>GHK-Cu</span>
+</div>
+<div class="molecule-hero">
+  <div class="molecule-container">
+    <div class="molecule-loading" id="loadingIndicator">
+      <div class="loading-spinner"></div>
+      <div class="loading-text">Loading 3D molecular structure...</div>
+    </div>
+    <div id="molecule-viewer"></div>
+    <div class="molecule-hint">Drag to rotate · Scroll to zoom</div>
+    <div class="molecule-overlay">
+      <div class="molecule-info">
+        <div class="molecule-formula">C₁₄H₂₃CuN₆O₄ · Tripeptide-copper complex · 403.9 g/mol</div>
+        <div class="molecule-name">GHK-Cu</div>
+        <div class="molecule-sub">Copper Peptide GHK</div>
+      </div>
+      <div class="molecule-controls">
+        <button class="style-btn active" onclick="setStyle('stick')" id="btn-stick">Stick</button>
+        <button class="style-btn" onclick="setStyle('sphere')" id="btn-sphere">Sphere</button>
+        <button class="style-btn" onclick="setStyle('cartoon')" id="btn-cartoon">Ribbon</button>
+        <button class="style-btn active" onclick="toggleSpin()" id="btn-spin">⟳ Spin</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="page-layout">
+<main class="main-content">
+  <div class="quick-stats">
+    <div class="quick-stat"><div class="quick-stat-dot dot-amber"></div><span class="quick-stat-label">Science Score</span><span class="quick-stat-value">6/10</span></div>
+    <div class="quick-stat"><div class="quick-stat-dot dot-green"></div><span class="quick-stat-label">Community</span><span class="quick-stat-value">81% positive</span></div>
+    <div class="quick-stat"><div class="quick-stat-dot dot-amber"></div><span class="quick-stat-label">FDA Status</span><span class="quick-stat-value">Reclassification pending</span></div>
+    <div class="quick-stat"><div class="quick-stat-dot dot-blue"></div><span class="quick-stat-label">Reports</span><span class="quick-stat-value">3,102 analyzed</span></div>
+  </div>
+  <section class="content-section" id="what-is-it">
+    <p class="section-label">Overview</p>
+    <h2>What is GHK-Cu?</h2>
+    <p>GHK-Cu is a naturally occurring copper-binding tripeptide composed of three amino acids — glycine, histidine, and lysine — complexed with a copper ion. It was first identified in human plasma in 1973 and has since been found in saliva, urine, and various tissues.</p>
+<p>It is one of the most studied cosmetic peptides. GHK-Cu is known to decline significantly with age — plasma levels drop from around 200ng/mL at age 20 to around 80ng/mL at age 60 — which has led to significant interest in its role in aging and tissue regeneration.</p>
+<p>It has a dual market: a large and well-established cosmetic skincare market where it is used topically, and a smaller but growing injection market where biohackers use it systemically for anti-aging, hair growth, and wound healing. The topical evidence base is considerably stronger than the injectable evidence.</p>
+  </section>
+  <section class="content-section" id="research">
+    <p class="section-label">Scientific Evidence</p>
+    <h2>What the research actually says</h2>
+    <div class="study-card">
+<div class="study-top"><div class="study-title">GHK-Cu promotes collagen synthesis and skin repair — multiple RCTs</div><span class="evidence-badge badge-moderate">Moderate</span></div>
+<div class="study-meta">Multiple studies · 1990–2022</div>
+<div class="study-finding">Several randomized controlled trials on topical GHK-Cu creams show statistically significant improvements in skin thickness, elasticity, and fine line reduction. This is among the strongest human evidence for any cosmetic peptide.</div>
+<a href="https://pubmed.ncbi.nlm.nih.gov" target="_blank" class="study-link">View on PubMed →</a>
+</div><div class="study-card">
+<div class="study-top"><div class="study-title">GHK-Cu stimulates hair follicle growth in vitro and in vivo</div><span class="evidence-badge badge-moderate">Moderate (mixed)</span></div>
+<div class="study-meta">Journal of Investigative Dermatology · 2007</div>
+<div class="study-finding">GHK-Cu was shown to enlarge hair follicle size and stimulate hair growth in both cell culture and mouse studies. Human data on injection use for hair loss is limited to small case series.</div>
+<a href="https://pubmed.ncbi.nlm.nih.gov" target="_blank" class="study-link">View on PubMed →</a>
+</div><div class="study-card">
+<div class="study-top"><div class="study-title">Systemic GHK-Cu for wound healing — animal models</div><span class="evidence-badge badge-limited">Limited</span></div>
+<div class="study-meta">Multiple animal studies · 1990–2015</div>
+<div class="study-finding">Animal studies show acceleration of wound healing, tissue remodeling, and anti-inflammatory effects from systemic GHK-Cu. Human data on injectable systemic use is minimal.</div>
+<a href="https://pubmed.ncbi.nlm.nih.gov" target="_blank" class="study-link">View on PubMed →</a>
+</div>
+  </section>
+  <section class="content-section" id="uses">
+    <p class="section-label">Applications</p>
+    <h2>What people use it for</h2>
+    <div class="use-cases"><div class="use-case-card">
+<div class="use-case-icon">✨</div>
+<div class="use-case-title">Skin anti-aging</div>
+<div class="use-case-desc">Most evidence-backed use. Topical RCTs show collagen stimulation, improved elasticity, and fine line reduction.</div>
+<div class="use-case-evidence">Evidence: Topical RCTs strong · Injectable: Limited</div>
+</div><div class="use-case-card">
+<div class="use-case-icon">💇</div>
+<div class="use-case-title">Hair growth & thickness</div>
+<div class="use-case-desc">Growing use case. Some evidence from follicle studies. Popular in hair loss communities.</div>
+<div class="use-case-evidence">Evidence: Animal + in vitro · Human injection data: Minimal</div>
+</div><div class="use-case-card">
+<div class="use-case-icon">🩹</div>
+<div class="use-case-title">Wound healing</div>
+<div class="use-case-desc">Strong topical wound healing evidence in clinical settings. Injectable systemic use is anecdotally reported.</div>
+<div class="use-case-evidence">Evidence: Clinical topical strong · Systemic: Animal only</div>
+</div><div class="use-case-card">
+<div class="use-case-icon">🔬</div>
+<div class="use-case-title">Tissue regeneration</div>
+<div class="use-case-desc">Broad tissue remodeling effects observed in animal models. Mechanism involves modulation of multiple growth factors.</div>
+<div class="use-case-evidence">Evidence: Animal studies · Human data: Anecdotal</div>
+</div></div>
+  </section>
+  <section class="content-section" id="dosage">
+    <p class="section-label">Dosage Guidance</p>
+    <h2>What dosages appear in the research</h2>
+    <p>No established human dosing guidelines exist for GHK-Cu. The following is based on available research and community reports. This is not a dosage recommendation.</p>
+    <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:16px;">
+      <table class="dosage-table">
+        <thead><tr><th>Route</th><th>Common range</th><th>Frequency</th><th>Source</th></tr></thead>
+        <tbody><tr><td>Topical cream / serum</td><td>1–5% concentration</td><td>Once or twice daily</td><td>Cosmetic formulations</td></tr><tr><td>Subcutaneous injection</td><td>1–2mg per dose</td><td>Daily to every other day</td><td>Community reports</td></tr><tr><td>Scalp injection (mesotherapy)</td><td>0.5–1mg per session</td><td>Weekly</td><td>Community reports</td></tr></tbody>
+      </table>
+    </div>
+    <div class="disclaimer"><strong>Important:</strong> These dosages are not based on completed human clinical trials. No established safe dose for humans exists. GHK-Cu is not FDA approved. Consult a licensed physician before use.</div>
+  </section>
+  <section class="content-section" id="side-effects">
+    <p class="section-label">Safety</p>
+    <h2>Reported side effects</h2>
+    <p>Based on community reports and available data. Long-term safety in humans is unknown.</p>
+    <div class="side-effects-grid"><div class="side-effect-item">
+<div class="side-effect-dot" style="background:#CECEC6"></div>
+<div><div class="side-effect-name">Skin redness (topical)</div><div class="side-effect-freq">Occasional · Usually temporary</div></div>
+</div><div class="side-effect-item">
+<div class="side-effect-dot" style="background:#CECEC6"></div>
+<div><div class="side-effect-name">Injection site irritation</div><div class="side-effect-freq">Common with injections</div></div>
+</div><div class="side-effect-item">
+<div class="side-effect-dot" style="background:#CECEC6"></div>
+<div><div class="side-effect-name">Temporary skin darkening</div><div class="side-effect-freq">Rare · Copper-related</div></div>
+</div><div class="side-effect-item">
+<div class="side-effect-dot" style="background:#EF9F27"></div>
+<div><div class="side-effect-name">Nausea (injection)</div><div class="side-effect-freq">Some reports at higher doses</div></div>
+</div><div class="side-effect-item">
+<div class="side-effect-dot" style="background:#CECEC6"></div>
+<div><div class="side-effect-name">Metallic taste</div><div class="side-effect-freq">Occasional · Copper-related</div></div>
+</div><div class="side-effect-item">
+<div class="side-effect-dot" style="background:#E24B4A"></div>
+<div><div class="side-effect-name">Copper toxicity risk at high doses</div><div class="side-effect-freq">Theoretical · Not well studied</div></div>
+</div></div>
+  </section>
+  <section class="content-section" id="stacks">
+    <p class="section-label">Common Combinations</p>
+    <h2>Frequently stacked with</h2>
+    <p>Commonly reported in the community. No clinical research on these combinations exists.</p>
+    <div class="stack-grid"><a href="/peptides/bpc-157" class="stack-card">
+<div><div class="stack-card-name">BPC-157</div><div class="stack-card-purpose">Anti-inflammatory + healing</div></div>
+<span style="color:var(--text-faint)">→</span>
+</a><a href="/peptides/tb-500" class="stack-card">
+<div><div class="stack-card-name">TB-500</div><div class="stack-card-purpose">Tissue repair synergy</div></div>
+<span style="color:var(--text-faint)">→</span>
+</a><a href="/peptides/thymosin-alpha-1" class="stack-card">
+<div><div class="stack-card-name">Thymosin Alpha-1</div><div class="stack-card-purpose">Immune + skin health</div></div>
+<span style="color:var(--text-faint)">→</span>
+</a></div>
+  </section>
+  <section class="content-section" id="community">
+    <p class="section-label">Community Reports</p>
+    <h2>What real users report</h2>
+    <p>Aggregated from 3,102 analyzed Reddit posts and forum discussions. Anecdotal data — not clinical evidence.</p>
+    <div class="community-bars"><div class="community-bar-row">
+<div class="community-bar-top"><span class="community-bar-label">Skin quality improvement</span><span class="community-bar-pct score-green">84% positive</span></div>
+<div class="community-bar-track"><div class="community-bar-fill" style="width:84%;background:var(--score-green)"></div></div>
+</div><div class="community-bar-row">
+<div class="community-bar-top"><span class="community-bar-label">Hair growth / thickness</span><span class="community-bar-pct score-green">72% positive</span></div>
+<div class="community-bar-track"><div class="community-bar-fill" style="width:72%;background:var(--score-green)"></div></div>
+</div><div class="community-bar-row">
+<div class="community-bar-top"><span class="community-bar-label">Wound healing</span><span class="community-bar-pct score-green">78% positive</span></div>
+<div class="community-bar-track"><div class="community-bar-fill" style="width:78%;background:var(--score-green)"></div></div>
+</div><div class="community-bar-row">
+<div class="community-bar-top"><span class="community-bar-label">General anti-aging effects</span><span class="community-bar-pct score-amber">69% positive</span></div>
+<div class="community-bar-track"><div class="community-bar-fill" style="width:69%;background:var(--score-green)"></div></div>
+</div><div class="community-bar-row">
+<div class="community-bar-top"><span class="community-bar-label">No noticeable effect</span><span class="community-bar-pct ">14% positive</span></div>
+<div class="community-bar-track"><div class="community-bar-fill" style="width:14%;background:var(--border-strong)"></div></div>
+</div></div>
+    <div class="report-count">
+      <div><div style="font-size:12px;color:var(--text-faint);margin-bottom:2px">Total analyzed reports</div><div class="report-count-num">3,102</div></div>
+      <div style="text-align:right"><div style="font-size:12px;color:var(--text-faint);margin-bottom:2px">Last updated</div><div style="font-size:13px;font-weight:500">April 2026</div></div>
+    </div>
+    <div class="disclaimer" style="margin-top:16px"><strong>Anecdotal data disclaimer:</strong> Community reports are self-reported and unverified. Confirmation bias and placebo effect influence these numbers.</div>
+  </section>
+  <section class="content-section" id="bottom-line">
+    <p class="section-label">Summary</p>
+    <h2>The bottom line</h2>
+    <p>GHK-Cu is the best-evidenced peptide on this site for cosmetic applications. Its topical RCT data for skin anti-aging and wound healing is genuinely strong. The injectable systemic evidence is much weaker — mostly animal studies and community anecdote. The sharp growth in search interest (+1,016% YoY) reflects viral skincare content rather than new clinical breakthroughs. For topical use, GHK-Cu is well-supported. For injectable systemic use, the evidence picture is similar to other experimental peptides — promising but unproven in humans.</p>
+  </section>
+</main>
+<aside class="sidebar">
+  <div class="score-card">
+    <h3>Science Score</h3>
+    <div class="big-score">
+      <div class="big-score-num score-amber">6/10</div>
+      <div class="big-score-label">See breakdown below</div>
+      <div class="big-score-bar"><div class="big-score-fill" style="width:60%;background:var(--score-amber)"></div></div>
+      <div class="big-score-sub">Based on human trial quality</div>
+    </div>
+    <div class="score-divider"></div>
+    <div class="score-breakdown"><div class="breakdown-row"><span class="breakdown-label">Topical RCTs</span><span class="breakdown-value">Several published</span></div><div class="breakdown-row"><span class="breakdown-label">Injectable human data</span><span class="breakdown-value">Very limited</span></div><div class="breakdown-row"><span class="breakdown-label">Animal studies</span><span class="breakdown-value">Extensive</span></div><div class="breakdown-row"><span class="breakdown-label">Cosmetic market</span><span class="breakdown-value">Established</span></div><div class="breakdown-row"><span class="breakdown-label">FDA approved</span><span class="breakdown-value">No (cosmetic use)</span></div></div>
+  </div>
+  <div class="score-card">
+    <h3>Community Score</h3>
+    <div class="big-score">
+      <div class="big-score-num score-green">81%</div>
+      <div class="big-score-label">Positive outcomes reported</div>
+      <div class="big-score-bar"><div class="big-score-fill" style="width:81%;background:var(--score-green)"></div></div>
+      <div class="big-score-sub">From 3,102 analyzed reports</div>
+    </div>
+    <div class="score-divider"></div>
+    <div class="score-breakdown"><div class="breakdown-row"><span class="breakdown-label">Positive</span><span class="breakdown-value class="score-green"">81%</span></div><div class="breakdown-row"><span class="breakdown-label">Mixed / neutral</span><span class="breakdown-value class="score-amber"">12%</span></div><div class="breakdown-row"><span class="breakdown-label">Negative / no effect</span><span class="breakdown-value">7%</span></div><div class="breakdown-row"><span class="breakdown-label">Top use</span><span class="breakdown-value">Skin quality</span></div></div>
+  </div>
+  <div class="status-card">
+    <h3>Legal Status</h3>
+    <div class="status-item"><span class="status-item-label">FDA category</span><span class="status-pill pill-category2">Category 2</span></div>
+    <div class="status-item"><span class="status-item-label">US status</span><span class="status-pill pill-pending">Reclassification pending</span></div>
+    <div class="status-item"><span class="status-item-label">Prescription needed</span><span class="status-pill pill-yes">Yes</span></div>
+    <div class="status-item"><span class="status-item-label">WADA banned</span><span class="status-pill pill-no">No</span></div>
+    <div class="status-item"><span class="status-item-label">OTC available</span><span class="status-pill pill-yes">Not legally</span></div>
+    <div class="updated-badge"><div class="updated-dot"></div>Last updated April 2026</div>
+  </div>
+  <div class="toc-card">
+    <h3>On this page</h3>
+    <ul class="toc-list">
+      <li><a href="#what-is-it" class="active">What is GHK-Cu?</a></li>
+      <li><a href="#research">Scientific evidence</a></li>
+      <li><a href="#uses">What people use it for</a></li>
+      <li><a href="#dosage">Dosage guidance</a></li>
+      <li><a href="#side-effects">Side effects</a></li>
+      <li><a href="#stacks">Common stacks</a></li>
+      <li><a href="#community">Community reports</a></li>
+      <li><a href="#bottom-line">Bottom line</a></li>
+    </ul>
+  </div>
+</aside>
+</div>
+<script>
+let viewer=null,spinning=true;
+function initViewer(){
+  const loading=document.getElementById('loadingIndicator');
+  try{
+    viewer=$3Dmol.createViewer('molecule-viewer',{backgroundColor:'0x070f1c',antialias:true});
+    $3Dmol.download('cid:73017',viewer,{},function(){
+      loading.style.display='none';
+      viewer.setStyle({},{stick:{radius:0.1,colorscheme:'Jmol'},sphere:{scale:0.2,colorscheme:'Jmol'}});
+      viewer.zoomTo();viewer.zoom(0.82);viewer.render();viewer.spin(true);
+    });
+  }catch(e){loading.innerHTML='<div style="font-size:13px;color:rgba(255,255,255,0.3)">3D viewer requires internet connection</div>';}
+}
+function setStyle(s){
+  if(!viewer)return;
+  document.querySelectorAll('.style-btn:not(#btn-spin)').forEach(b=>b.classList.remove('active'));
+  if(s==='stick'){document.getElementById('btn-stick').classList.add('active');viewer.setStyle({},{stick:{radius:0.1,colorscheme:'Jmol'},sphere:{scale:0.2,colorscheme:'Jmol'}});}
+  else if(s==='sphere'){document.getElementById('btn-sphere').classList.add('active');viewer.setStyle({},{sphere:{colorscheme:'Jmol'}});}
+  else{document.getElementById('btn-cartoon').classList.add('active');viewer.setStyle({},{cartoon:{color:'spectrum'},stick:{radius:0.05}});}
+  viewer.render();
+}
+function toggleSpin(){
+  if(!viewer)return;spinning=!spinning;viewer.spin(spinning);
+  const b=document.getElementById('btn-spin');b.textContent=spinning?'⟳ Spin':'⏸ Paused';
+  if(!spinning)b.classList.remove('active');else b.classList.add('active');
+}
+const sections=document.querySelectorAll('.content-section');
+const tocLinks=document.querySelectorAll('.toc-list a');
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      tocLinks.forEach(l=>l.classList.remove('active'));
+      const a=document.querySelector(`.toc-list a[href="#${entry.target.id}"]`);
+      if(a)a.classList.add('active');
+    }
+  });
+},{rootMargin:'-20% 0px -70% 0px'});
+sections.forEach(s=>observer.observe(s));
+window.addEventListener('load',initViewer);
+</script>
+</body>
+</html>

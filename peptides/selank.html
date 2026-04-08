@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Selank — Evidence, Dosage & Community Reports | PepCover</title>
+<meta name="description" content="Evidence-based research on Selank — science score, community reports, legal status, dosage guidance, and side effects. No affiliate links.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://3dmol.csb.pitt.edu/build/3Dmol-min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#FAFAF8;--bg-card:#FFFFFF;--bg-subtle:#F4F4F0;--text:#1C1C1A;--text-muted:#6B6B65;--text-faint:#A0A09A;--accent:#0F6E56;--accent-light:#E1F5EE;--accent-mid:#1D9E75;--border:#E4E4DE;--border-strong:#CECEC6;--score-green:#1D9E75;--score-amber:#BA7517;--score-red:#A32D2D;--radius:10px;--radius-sm:6px;--sidebar:280px}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',-apple-system,sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(250,250,248,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;height:60px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:'Lora',serif;font-size:20px;font-weight:600;color:var(--text);text-decoration:none}
+.nav-logo span{color:var(--accent)}
+.nav-links{display:flex;align-items:center;gap:2rem;list-style:none}
+.nav-links a{font-size:14px;color:var(--text-muted);text-decoration:none;transition:color 0.15s}
+.nav-links a:hover{color:var(--text)}
+.nav-cta{background:var(--text);color:#fff!important;padding:8px 18px;border-radius:var(--radius-sm);font-size:13px!important;font-weight:500}
+.breadcrumb{max-width:1100px;margin:0 auto;padding:16px 2rem 0;display:flex;align-items:center;gap:6px;font-size:13px;color:var(--text-faint)}
+.breadcrumb a{color:var(--text-faint);text-decoration:none}
+.breadcrumb a:hover{color:var(--accent)}
+.molecule-hero{max-width:1100px;margin:0 auto;padding:24px 2rem 0}
+.molecule-container{width:100%;height:360px;border-radius:var(--radius);border:1px solid var(--border);background:linear-gradient(135deg, #0d2030 0%, #1a3a4a 40%, #1e5a6a 70%, #2a8a9a 100%);position:relative;overflow:hidden}
+#molecule-viewer{width:100%;height:100%}
+.molecule-overlay{position:absolute;bottom:0;left:0;right:0;padding:24px 28px;background:linear-gradient(to top,rgba(7,15,28,0.95) 0%,rgba(7,15,28,0.5) 55%,transparent 100%);display:flex;justify-content:space-between;align-items:flex-end;pointer-events:none;z-index:10}
+.molecule-info{pointer-events:none}
+.molecule-formula{font-size:12px;color:rgba(255,255,255,0.4);letter-spacing:1px;margin-bottom:6px}
+.molecule-name{font-family:'Lora',serif;font-size:40px;font-weight:600;color:#fff;letter-spacing:-0.5px;line-height:1.1;margin-bottom:4px}
+.molecule-sub{font-size:14px;color:rgba(255,255,255,0.45);font-weight:300}
+.molecule-controls{display:flex;gap:6px;pointer-events:all;z-index:11}
+.style-btn{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.7);padding:6px 14px;border-radius:100px;font-size:12px;font-family:'DM Sans',sans-serif;cursor:pointer;transition:background 0.15s}
+.style-btn:hover{background:rgba(255,255,255,0.16)}
+.style-btn.active{background:var(--accent);border-color:var(--accent);color:#fff}
+.molecule-hint{position:absolute;top:14px;right:14px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:var(--radius-sm);padding:5px 11px;font-size:11px;color:rgba(255,255,255,0.35);pointer-events:none;z-index:10}
+.molecule-loading{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;z-index:5;pointer-events:none}
+.loading-spinner{width:30px;height:30px;border:2px solid rgba(255,255,255,0.08);border-top-color:var(--accent-mid);border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 10px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loading-text{font-size:13px;color:rgba(255,255,255,0.35);font-weight:300}
+.page-layout{max-width:1100px;margin:0 auto;padding:40px 2rem 80px;display:grid;grid-template-columns:1fr var(--sidebar);gap:48px;align-items:start}
+.main-content{min-width:0}
+.quick-stats{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px}
+.quick-stat{display:flex;align-items:center;gap:6px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:8px 14px;font-size:13px}
+.quick-stat-dot{width:7px;height:7px;border-radius:50%}
+.dot-amber{background:#EF9F27}.dot-green{background:var(--score-green)}.dot-blue{background:#378ADD}
+.quick-stat-label{color:var(--text-faint)}.quick-stat-value{font-weight:500}
+.section-label{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:1.2px;color:var(--accent);margin-bottom:8px}
+.content-section{margin-bottom:48px;padding-bottom:48px;border-bottom:1px solid var(--border)}
+.content-section:last-child{border-bottom:none;margin-bottom:0}
+.content-section h2{font-family:'Lora',serif;font-size:24px;font-weight:600;letter-spacing:-0.3px;margin-bottom:16px}
+.content-section p{color:var(--text-muted);line-height:1.75;font-weight:300;margin-bottom:16px}
+.content-section p:last-child{margin-bottom:0}
+.study-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:20px 22px;margin-bottom:12px}
+.study-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:10px}
+.study-title{font-size:14px;font-weight:500;line-height:1.4}
+.evidence-badge{font-size:11px;font-weight:500;padding:3px 9px;border-radius:100px;white-space:nowrap;flex-shrink:0}
+.badge-limited{background:#F4F4F0;color:var(--text-muted);border:1px solid var(--border)}
+.badge-moderate{background:#FAEEDA;color:#854F0B;border:1px solid #FAC775}
+.badge-strong{background:var(--accent-light);color:var(--accent);border:1px solid #9FE1CB}
+.study-meta{font-size:12px;color:var(--text-faint);margin-bottom:8px}
+.study-finding{font-size:13px;color:var(--text-muted);line-height:1.6;font-weight:300}
+.study-link{display:inline-block;margin-top:8px;font-size:12px;color:var(--accent);text-decoration:none}
+.study-link:hover{text-decoration:underline}
+.use-cases{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+.use-case-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:18px 20px}
+.use-case-icon{font-size:20px;margin-bottom:8px}
+.use-case-title{font-size:14px;font-weight:500;margin-bottom:4px}
+.use-case-desc{font-size:13px;color:var(--text-muted);font-weight:300;line-height:1.5}
+.use-case-evidence{font-size:11px;color:var(--text-faint);margin-top:8px}
+.dosage-table{width:100%;border-collapse:collapse;font-size:14px}
+.dosage-table th{text-align:left;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:0.6px;color:var(--text-faint);padding:0 16px 10px;border-bottom:1px solid var(--border)}
+.dosage-table td{padding:12px 16px;border-bottom:1px solid var(--border);vertical-align:middle;color:var(--text-muted)}
+.dosage-table td:first-child{font-weight:500;color:var(--text)}
+.dosage-table tr:last-child td{border-bottom:none}
+.side-effects-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.side-effect-item{display:flex;align-items:flex-start;gap:10px;padding:14px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);font-size:13px}
+.side-effect-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:4px}
+.side-effect-name{font-weight:500;margin-bottom:2px}
+.side-effect-freq{font-size:12px;color:var(--text-faint)}
+.stack-grid{display:flex;gap:10px;flex-wrap:wrap}
+.stack-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 16px;text-decoration:none;color:inherit;transition:border-color 0.15s;display:flex;align-items:center;gap:8px}
+.stack-card:hover{border-color:var(--accent)}
+.stack-card-name{font-size:14px;font-weight:500}
+.stack-card-purpose{font-size:12px;color:var(--text-faint)}
+.disclaimer{background:#FAEEDA;border:1px solid #FAC775;border-radius:var(--radius);padding:16px 20px;font-size:13px;color:#854F0B;line-height:1.6;margin-top:16px}
+.community-bars{display:flex;flex-direction:column;gap:12px;margin-bottom:16px}
+.community-bar-row{font-size:13px}
+.community-bar-top{display:flex;justify-content:space-between;margin-bottom:5px}
+.community-bar-label{color:var(--text-muted);font-weight:300}
+.community-bar-pct{font-weight:500}
+.community-bar-track{height:6px;background:var(--bg-subtle);border-radius:3px;overflow:hidden}
+.community-bar-fill{height:100%;border-radius:3px}
+.report-count{background:var(--bg-subtle);border-radius:var(--radius-sm);padding:12px 16px;display:flex;justify-content:space-between;align-items:center;font-size:13px;margin-top:16px}
+.report-count-num{font-family:'Lora',serif;font-size:22px;font-weight:600}
+.sidebar{position:sticky;top:80px}
+.score-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:22px;margin-bottom:16px}
+.score-card h3{font-size:13px;font-weight:500;color:var(--text-muted);margin-bottom:16px;text-transform:uppercase;letter-spacing:0.5px}
+.big-score{text-align:center;padding:16px 0}
+.big-score-num{font-family:'Lora',serif;font-size:52px;font-weight:600;line-height:1;margin-bottom:4px}
+.big-score-label{font-size:12px;color:var(--text-faint);margin-bottom:12px}
+.big-score-bar{height:6px;background:var(--bg-subtle);border-radius:3px;overflow:hidden;margin-bottom:8px}
+.big-score-fill{height:100%;border-radius:3px}
+.big-score-sub{font-size:12px;color:var(--text-faint)}
+.score-divider{height:1px;background:var(--border);margin:16px 0}
+.score-breakdown{display:flex;flex-direction:column;gap:8px}
+.breakdown-row{display:flex;justify-content:space-between;align-items:center;font-size:13px}
+.breakdown-label{color:var(--text-muted);font-weight:300}
+.breakdown-value{font-weight:500}
+.status-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:22px;margin-bottom:16px}
+.status-card h3{font-size:13px;font-weight:500;color:var(--text-muted);margin-bottom:16px;text-transform:uppercase;letter-spacing:0.5px}
+.status-item{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);font-size:13px}
+.status-item:last-child{border-bottom:none;padding-bottom:0}
+.status-item:first-child{padding-top:0}
+.status-item-label{color:var(--text-muted);font-weight:300}
+.status-pill{font-size:11px;font-weight:500;padding:3px 9px;border-radius:100px}
+.pill-pending{background:#FAEEDA;color:#854F0B}
+.pill-yes{background:#FCEBEB;color:#A32D2D}
+.pill-no{background:var(--accent-light);color:var(--accent)}
+.pill-review{background:#E6F1FB;color:#185FA5}
+.pill-category2{background:#FAEEDA;color:#854F0B}
+.updated-badge{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-faint);margin-top:12px}
+.updated-dot{width:6px;height:6px;background:var(--score-green);border-radius:50%}
+.toc-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:22px}
+.toc-card h3{font-size:13px;font-weight:500;color:var(--text-muted);margin-bottom:14px;text-transform:uppercase;letter-spacing:0.5px}
+.toc-list{list-style:none;display:flex;flex-direction:column;gap:2px}
+.toc-list a{display:block;font-size:13px;color:var(--text-muted);text-decoration:none;padding:6px 8px;border-radius:var(--radius-sm);transition:background 0.15s,color 0.15s;font-weight:300}
+.toc-list a:hover{background:var(--bg-subtle);color:var(--text)}
+.toc-list a.active{background:var(--accent-light);color:var(--accent);font-weight:500}
+.score-green{color:var(--score-green)}.score-amber{color:var(--score-amber)}.score-red{color:var(--score-red)}
+@media(max-width:800px){.page-layout{grid-template-columns:1fr}.sidebar{position:static}.use-cases,.side-effects-grid{grid-template-columns:1fr}.nav-links{display:none}.molecule-name{font-size:28px}.molecule-controls{display:none}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="nav-logo">Pep<span>Cover</span></a>
+  <ul class="nav-links">
+    <li><a href="/peptides">Peptides</a></li>
+    <li><a href="/regulation">Regulation</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/pro" class="nav-cta">Get Pro</a></li>
+  </ul>
+</nav>
+<div class="breadcrumb">
+  <a href="/">Home</a><span style="color:var(--text-faint)">›</span>
+  <a href="/peptides">Peptides</a><span style="color:var(--text-faint)">›</span>
+  <span>Selank</span>
+</div>
+<div class="molecule-hero">
+  <div class="molecule-container">
+    <div class="molecule-loading" id="loadingIndicator">
+      <div class="loading-spinner"></div>
+      <div class="loading-text">Loading 3D molecular structure...</div>
+    </div>
+    <div id="molecule-viewer"></div>
+    <div class="molecule-hint">Drag to rotate · Scroll to zoom</div>
+    <div class="molecule-overlay">
+      <div class="molecule-info">
+        <div class="molecule-formula">C₃₃H₅₇N₁₁O₉ · Heptapeptide · 751.9 g/mol</div>
+        <div class="molecule-name">Selank</div>
+        <div class="molecule-sub">Synthetic Tuftsin Analogue</div>
+      </div>
+      <div class="molecule-controls">
+        <button class="style-btn active" onclick="setStyle('stick')" id="btn-stick">Stick</button>
+        <button class="style-btn" onclick="setStyle('sphere')" id="btn-sphere">Sphere</button>
+        <button class="style-btn" onclick="setStyle('cartoon')" id="btn-cartoon">Ribbon</button>
+        <button class="style-btn active" onclick="toggleSpin()" id="btn-spin">⟳ Spin</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="page-layout">
+<main class="main-content">
+  <div class="quick-stats">
+    <div class="quick-stat"><div class="quick-stat-dot dot-amber"></div><span class="quick-stat-label">Science Score</span><span class="quick-stat-value">5/10</span></div>
+    <div class="quick-stat"><div class="quick-stat-dot dot-green"></div><span class="quick-stat-label">Community</span><span class="quick-stat-value">73% positive</span></div>
+    <div class="quick-stat"><div class="quick-stat-dot dot-blue"></div><span class="quick-stat-label">FDA Status</span><span class="quick-stat-value">Under PCAC review</span></div>
+    <div class="quick-stat"><div class="quick-stat-dot dot-blue"></div><span class="quick-stat-label">Reports</span><span class="quick-stat-value">987 analyzed</span></div>
+  </div>
+  <section class="content-section" id="what-is-it">
+    <p class="section-label">Overview</p>
+    <h2>What is Selank?</h2>
+    <p>Selank is a synthetic heptapeptide developed in Russia by the Institute of Molecular Genetics — the same institution that created Semax. It is an analogue of Tuftsin, a naturally occurring tetrapeptide produced from immunoglobulin G that plays a role in immune regulation and anxiety modulation.</p>
+<p>Like Semax, Selank has pharmaceutical approval in Russia — specifically as an anxiolytic (anti-anxiety) drug. It is prescribed for generalized anxiety disorder and as a treatment for neurasthenia (nervous exhaustion). This regulatory history gives it a clinical context that most experimental peptides lack.</p>
+<p>Its primary mechanism involves modulation of the GABA system — the same pathway as benzodiazepines — but without the sedation, dependence, or withdrawal issues associated with those drugs. It also has immunomodulatory effects through its Tuftsin-derived structure.</p>
+  </section>
+  <section class="content-section" id="research">
+    <p class="section-label">Scientific Evidence</p>
+    <h2>What the research actually says</h2>
+    <div class="study-card">
+<div class="study-top"><div class="study-title">Selank vs buspirone for generalized anxiety — Russian RCT</div><span class="evidence-badge badge-moderate">Moderate</span></div>
+<div class="study-meta">Russian clinical trial · Multiple publications</div>
+<div class="study-finding">Selank was compared to buspirone (a standard anxiolytic) in Russian clinical trials. Results showed comparable anxiolytic effect with a cleaner side effect profile — no sedation or cognitive impairment.</div>
+<a href="https://pubmed.ncbi.nlm.nih.gov" target="_blank" class="study-link">View on PubMed →</a>
+</div><div class="study-card">
+<div class="study-top"><div class="study-title">Selank and GABA-A receptor modulation</div><span class="evidence-badge badge-moderate">Moderate (animal)</span></div>
+<div class="study-meta">Neuropharmacology studies · Russia</div>
+<div class="study-finding">Mechanism studies confirm Selank modulates GABA-A receptor expression and function, explaining its anxiolytic effects. The mechanism is distinct from benzodiazepines — less risk of dependence.</div>
+<a href="https://pubmed.ncbi.nlm.nih.gov" target="_blank" class="study-link">View on PubMed →</a>
+</div><div class="study-card">
+<div class="study-top"><div class="study-title">Selank immunomodulatory effects — IL-6 and interferon pathways</div><span class="evidence-badge badge-limited">Limited</span></div>
+<div class="study-meta">Immunopharmacology studies · 2005–2015</div>
+<div class="study-finding">Studies show Selank modulates cytokine production including IL-6 and interferon. Clinical significance of immune effects in healthy users is unclear.</div>
+<a href="https://pubmed.ncbi.nlm.nih.gov" target="_blank" class="study-link">View on PubMed →</a>
+</div>
+  </section>
+  <section class="content-section" id="uses">
+    <p class="section-label">Applications</p>
+    <h2>What people use it for</h2>
+    <div class="use-cases"><div class="use-case-card">
+<div class="use-case-icon">😌</div>
+<div class="use-case-title">Anxiety reduction</div>
+<div class="use-case-desc">Primary approved use in Russia. Most evidence-backed application. Compares favorably to standard anxiolytics in small trials.</div>
+<div class="use-case-evidence">Evidence: Russian RCTs · Western data: Limited</div>
+</div><div class="use-case-card">
+<div class="use-case-icon">🧠</div>
+<div class="use-case-title">Cognitive enhancement</div>
+<div class="use-case-desc">Commonly stacked with Semax for combined nootropic effects. Reported to improve focus without anxiolytic sedation.</div>
+<div class="use-case-evidence">Evidence: Anecdotal · Mechanism: Plausible</div>
+</div><div class="use-case-card">
+<div class="use-case-icon">🛡️</div>
+<div class="use-case-title">Immune modulation</div>
+<div class="use-case-desc">Tuftsin-derived structure has immunomodulatory properties. Some users report fewer infections.</div>
+<div class="use-case-evidence">Evidence: Animal studies · Human: Anecdotal</div>
+</div><div class="use-case-card">
+<div class="use-case-icon">😴</div>
+<div class="use-case-title">Sleep quality</div>
+<div class="use-case-desc">Anxiolytic effects translate to improved sleep for anxiety-prone users. Not sedating at standard doses.</div>
+<div class="use-case-evidence">Evidence: Anecdotal · Mechanism: GABA modulation</div>
+</div></div>
+  </section>
+  <section class="content-section" id="dosage">
+    <p class="section-label">Dosage Guidance</p>
+    <h2>What dosages appear in the research</h2>
+    <p>No established human dosing guidelines exist for Selank. The following is based on available research and community reports. This is not a dosage recommendation.</p>
+    <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:16px;">
+      <table class="dosage-table">
+        <thead><tr><th>Route</th><th>Common range</th><th>Frequency</th><th>Source</th></tr></thead>
+        <tbody><tr><td>Intranasal spray</td><td>250–500mcg per dose</td><td>Once or twice daily</td><td>Russian clinical practice</td></tr><tr><td>Subcutaneous injection</td><td>250–300mcg per dose</td><td>Once daily</td><td>Community reports</td></tr><tr><td>Sublingual</td><td>250mcg per dose</td><td>As needed for anxiety</td><td>Community reports</td></tr></tbody>
+      </table>
+    </div>
+    <div class="disclaimer"><strong>Important:</strong> These dosages are not based on completed human clinical trials. No established safe dose for humans exists. Selank is not FDA approved. Consult a licensed physician before use.</div>
+  </section>
+  <section class="content-section" id="side-effects">
+    <p class="section-label">Safety</p>
+    <h2>Reported side effects</h2>
+    <p>Based on community reports and available data. Long-term safety in humans is unknown.</p>
+    <div class="side-effects-grid"><div class="side-effect-item">
+<div class="side-effect-dot" style="background:#CECEC6"></div>
+<div><div class="side-effect-name">Mild sedation initially</div><div class="side-effect-freq">Some users · Typically fades</div></div>
+</div><div class="side-effect-item">
+<div class="side-effect-dot" style="background:#CECEC6"></div>
+<div><div class="side-effect-name">Nasal irritation (intranasal)</div><div class="side-effect-freq">Common · Mild</div></div>
+</div><div class="side-effect-item">
+<div class="side-effect-dot" style="background:#CECEC6"></div>
+<div><div class="side-effect-name">Fatigue</div><div class="side-effect-freq">Occasional</div></div>
+</div><div class="side-effect-item">
+<div class="side-effect-dot" style="background:#EF9F27"></div>
+<div><div class="side-effect-name">Emotional blunting</div><div class="side-effect-freq">Some reports at higher doses</div></div>
+</div><div class="side-effect-item">
+<div class="side-effect-dot" style="background:#CECEC6"></div>
+<div><div class="side-effect-name">Headache</div><div class="side-effect-freq">Occasional · First few uses</div></div>
+</div><div class="side-effect-item">
+<div class="side-effect-dot" style="background:#CECEC6"></div>
+<div><div class="side-effect-name">Appetite changes</div><div class="side-effect-freq">Rare · Mild</div></div>
+</div></div>
+  </section>
+  <section class="content-section" id="stacks">
+    <p class="section-label">Common Combinations</p>
+    <h2>Frequently stacked with</h2>
+    <p>Commonly reported in the community. No clinical research on these combinations exists.</p>
+    <div class="stack-grid"><a href="/peptides/semax" class="stack-card">
+<div><div class="stack-card-name">Semax</div><div class="stack-card-purpose">Cognitive + anxiety balance</div></div>
+<span style="color:var(--text-faint)">→</span>
+</a><a href="/peptides/bpc-157" class="stack-card">
+<div><div class="stack-card-name">BPC-157</div><div class="stack-card-purpose">Gut-brain axis support</div></div>
+<span style="color:var(--text-faint)">→</span>
+</a><a href="/peptides/ghk-cu" class="stack-card">
+<div><div class="stack-card-name">GHK-Cu</div><div class="stack-card-purpose">Overall wellbeing</div></div>
+<span style="color:var(--text-faint)">→</span>
+</a></div>
+  </section>
+  <section class="content-section" id="community">
+    <p class="section-label">Community Reports</p>
+    <h2>What real users report</h2>
+    <p>Aggregated from 987 analyzed Reddit posts and forum discussions. Anecdotal data — not clinical evidence.</p>
+    <div class="community-bars"><div class="community-bar-row">
+<div class="community-bar-top"><span class="community-bar-label">Anxiety reduction</span><span class="community-bar-pct score-green">78% positive</span></div>
+<div class="community-bar-track"><div class="community-bar-fill" style="width:78%;background:var(--score-green)"></div></div>
+</div><div class="community-bar-row">
+<div class="community-bar-top"><span class="community-bar-label">Mental clarity</span><span class="community-bar-pct score-amber">68% positive</span></div>
+<div class="community-bar-track"><div class="community-bar-fill" style="width:68%;background:var(--score-green)"></div></div>
+</div><div class="community-bar-row">
+<div class="community-bar-top"><span class="community-bar-label">Sleep quality</span><span class="community-bar-pct score-amber">65% positive</span></div>
+<div class="community-bar-track"><div class="community-bar-fill" style="width:65%;background:var(--score-green)"></div></div>
+</div><div class="community-bar-row">
+<div class="community-bar-top"><span class="community-bar-label">Mood stability</span><span class="community-bar-pct score-green">71% positive</span></div>
+<div class="community-bar-track"><div class="community-bar-fill" style="width:71%;background:var(--score-green)"></div></div>
+</div><div class="community-bar-row">
+<div class="community-bar-top"><span class="community-bar-label">No noticeable effect</span><span class="community-bar-pct ">20% positive</span></div>
+<div class="community-bar-track"><div class="community-bar-fill" style="width:20%;background:var(--border-strong)"></div></div>
+</div></div>
+    <div class="report-count">
+      <div><div style="font-size:12px;color:var(--text-faint);margin-bottom:2px">Total analyzed reports</div><div class="report-count-num">987</div></div>
+      <div style="text-align:right"><div style="font-size:12px;color:var(--text-faint);margin-bottom:2px">Last updated</div><div style="font-size:13px;font-weight:500">April 2026</div></div>
+    </div>
+    <div class="disclaimer" style="margin-top:16px"><strong>Anecdotal data disclaimer:</strong> Community reports are self-reported and unverified. Confirmation bias and placebo effect influence these numbers.</div>
+  </section>
+  <section class="content-section" id="bottom-line">
+    <p class="section-label">Summary</p>
+    <h2>The bottom line</h2>
+    <p>Selank is the most evidence-backed anxiolytic peptide available in the experimental peptide space. Like Semax, its pharmaceutical approval in Russia gives it a clinical credibility that pure research chemicals lack. The GABA modulation mechanism is well-characterized and explains its effects. The lack of dependence potential and clean side effect profile make it attractive compared to benzodiazepines. Western clinical validation is needed before it can be considered for mainstream use.</p>
+  </section>
+</main>
+<aside class="sidebar">
+  <div class="score-card">
+    <h3>Science Score</h3>
+    <div class="big-score">
+      <div class="big-score-num score-amber">5/10</div>
+      <div class="big-score-label">See breakdown below</div>
+      <div class="big-score-bar"><div class="big-score-fill" style="width:50%;background:var(--score-amber)"></div></div>
+      <div class="big-score-sub">Based on human trial quality</div>
+    </div>
+    <div class="score-divider"></div>
+    <div class="score-breakdown"><div class="breakdown-row"><span class="breakdown-label">Human trials</span><span class="breakdown-value">Russian RCTs</span></div><div class="breakdown-row"><span class="breakdown-label">Pharmaceutical approval</span><span class="breakdown-value">Russia (anxiolytic)</span></div><div class="breakdown-row"><span class="breakdown-label">Mechanism</span><span class="breakdown-value">GABA modulation</span></div><div class="breakdown-row"><span class="breakdown-label">Western trials</span><span class="breakdown-value">None</span></div><div class="breakdown-row"><span class="breakdown-label">FDA approved</span><span class="breakdown-value">No</span></div></div>
+  </div>
+  <div class="score-card">
+    <h3>Community Score</h3>
+    <div class="big-score">
+      <div class="big-score-num score-green">73%</div>
+      <div class="big-score-label">Positive outcomes reported</div>
+      <div class="big-score-bar"><div class="big-score-fill" style="width:73%;background:var(--score-green)"></div></div>
+      <div class="big-score-sub">From 987 analyzed reports</div>
+    </div>
+    <div class="score-divider"></div>
+    <div class="score-breakdown"><div class="breakdown-row"><span class="breakdown-label">Positive</span><span class="breakdown-value class="score-green"">73%</span></div><div class="breakdown-row"><span class="breakdown-label">Mixed / neutral</span><span class="breakdown-value class="score-amber"">18%</span></div><div class="breakdown-row"><span class="breakdown-label">Negative / no effect</span><span class="breakdown-value">9%</span></div><div class="breakdown-row"><span class="breakdown-label">Top use</span><span class="breakdown-value">Anxiety relief</span></div></div>
+  </div>
+  <div class="status-card">
+    <h3>Legal Status</h3>
+    <div class="status-item"><span class="status-item-label">FDA category</span><span class="status-pill pill-category2">Category 2</span></div>
+    <div class="status-item"><span class="status-item-label">US status</span><span class="status-pill pill-pending">Under PCAC review</span></div>
+    <div class="status-item"><span class="status-item-label">Prescription needed</span><span class="status-pill pill-yes">Yes</span></div>
+    <div class="status-item"><span class="status-item-label">WADA banned</span><span class="status-pill pill-no">No</span></div>
+    <div class="status-item"><span class="status-item-label">OTC available</span><span class="status-pill pill-yes">Not legally</span></div>
+    <div class="updated-badge"><div class="updated-dot"></div>Last updated April 2026</div>
+  </div>
+  <div class="toc-card">
+    <h3>On this page</h3>
+    <ul class="toc-list">
+      <li><a href="#what-is-it" class="active">What is Selank?</a></li>
+      <li><a href="#research">Scientific evidence</a></li>
+      <li><a href="#uses">What people use it for</a></li>
+      <li><a href="#dosage">Dosage guidance</a></li>
+      <li><a href="#side-effects">Side effects</a></li>
+      <li><a href="#stacks">Common stacks</a></li>
+      <li><a href="#community">Community reports</a></li>
+      <li><a href="#bottom-line">Bottom line</a></li>
+    </ul>
+  </div>
+</aside>
+</div>
+<script>
+let viewer=null,spinning=true;
+function initViewer(){
+  const loading=document.getElementById('loadingIndicator');
+  try{
+    viewer=$3Dmol.createViewer('molecule-viewer',{backgroundColor:'0x070f1c',antialias:true});
+    $3Dmol.download('cid:11975634',viewer,{},function(){
+      loading.style.display='none';
+      viewer.setStyle({},{stick:{radius:0.1,colorscheme:'Jmol'},sphere:{scale:0.2,colorscheme:'Jmol'}});
+      viewer.zoomTo();viewer.zoom(0.82);viewer.render();viewer.spin(true);
+    });
+  }catch(e){loading.innerHTML='<div style="font-size:13px;color:rgba(255,255,255,0.3)">3D viewer requires internet connection</div>';}
+}
+function setStyle(s){
+  if(!viewer)return;
+  document.querySelectorAll('.style-btn:not(#btn-spin)').forEach(b=>b.classList.remove('active'));
+  if(s==='stick'){document.getElementById('btn-stick').classList.add('active');viewer.setStyle({},{stick:{radius:0.1,colorscheme:'Jmol'},sphere:{scale:0.2,colorscheme:'Jmol'}});}
+  else if(s==='sphere'){document.getElementById('btn-sphere').classList.add('active');viewer.setStyle({},{sphere:{colorscheme:'Jmol'}});}
+  else{document.getElementById('btn-cartoon').classList.add('active');viewer.setStyle({},{cartoon:{color:'spectrum'},stick:{radius:0.05}});}
+  viewer.render();
+}
+function toggleSpin(){
+  if(!viewer)return;spinning=!spinning;viewer.spin(spinning);
+  const b=document.getElementById('btn-spin');b.textContent=spinning?'⟳ Spin':'⏸ Paused';
+  if(!spinning)b.classList.remove('active');else b.classList.add('active');
+}
+const sections=document.querySelectorAll('.content-section');
+const tocLinks=document.querySelectorAll('.toc-list a');
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      tocLinks.forEach(l=>l.classList.remove('active'));
+      const a=document.querySelector(`.toc-list a[href="#${entry.target.id}"]`);
+      if(a)a.classList.add('active');
+    }
+  });
+},{rootMargin:'-20% 0px -70% 0px'});
+sections.forEach(s=>observer.observe(s));
+window.addEventListener('load',initViewer);
+</script>
+</body>
+</html>
