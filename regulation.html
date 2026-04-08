@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Peptide Regulation Tracker 2026 — FDA Status & Legal Guide | PepCover</title>
+<meta name="description" content="Live tracker of FDA peptide regulation status in 2026. Covers the RFK reclassification, Category 1 vs Category 2 explained, and current legal status of all major peptides.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #FAFAF8; --bg-card: #FFFFFF; --bg-subtle: #F4F4F0;
+    --text: #1C1C1A; --text-muted: #6B6B65; --text-faint: #A0A09A;
+    --accent: #0F6E56; --accent-light: #E1F5EE; --accent-mid: #1D9E75;
+    --border: #E4E4DE; --border-strong: #CECEC6;
+    --score-green: #1D9E75; --score-amber: #BA7517; --score-red: #A32D2D;
+    --radius: 10px; --radius-sm: 6px;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', -apple-system, sans-serif; background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(250,250,248,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 2rem; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+  .nav-logo { font-family: 'Lora', serif; font-size: 20px; font-weight: 600; color: var(--text); text-decoration: none; }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+  .nav-links a { font-size: 14px; color: var(--text-muted); text-decoration: none; transition: color 0.15s; }
+  .nav-links a:hover { color: var(--text); }
+  .nav-links a.active { color: var(--accent); font-weight: 500; }
+  .nav-cta { background: var(--text); color: #fff !important; padding: 8px 18px; border-radius: var(--radius-sm); font-size: 13px !important; font-weight: 500; }
+
+  /* HERO */
+  .page-hero { max-width: 800px; margin: 0 auto; padding: 72px 2rem 56px; text-align: center; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: #FAEEDA; color: #854F0B; font-size: 12px; font-weight: 500; padding: 5px 14px; border-radius: 100px; margin-bottom: 24px; border: 1px solid #FAC775; }
+  .hero-badge::before { content: ''; width: 6px; height: 6px; background: #EF9F27; border-radius: 50%; display: inline-block; }
+  .page-hero h1 { font-family: 'Lora', serif; font-size: clamp(30px, 5vw, 46px); font-weight: 600; line-height: 1.15; letter-spacing: -0.4px; margin-bottom: 16px; }
+  .page-hero p { font-size: 17px; color: var(--text-muted); font-weight: 300; max-width: 540px; margin: 0 auto 32px; line-height: 1.65; }
+
+  .last-updated { display: inline-flex; align-items: center; gap: 8px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 8px 16px; font-size: 13px; color: var(--text-muted); }
+  .live-dot { width: 7px; height: 7px; background: var(--score-green); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+  /* LAYOUT */
+  .page-wrap { max-width: 1100px; margin: 0 auto; padding: 0 2rem 80px; }
+
+  /* SUMMARY CARDS */
+  .summary-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 48px; }
+  .summary-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; text-align: center; }
+  .summary-num { font-family: 'Lora', serif; font-size: 36px; font-weight: 600; line-height: 1; margin-bottom: 6px; }
+  .summary-label { font-size: 12px; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.6px; }
+  .num-amber { color: var(--score-amber); }
+  .num-green { color: var(--score-green); }
+  .num-blue  { color: #185FA5; }
+  .num-red   { color: var(--score-red); }
+
+  /* TIMELINE */
+  .timeline-section { margin-bottom: 48px; }
+  .section-label { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 1.2px; color: var(--accent); margin-bottom: 10px; }
+  .section-title { font-family: 'Lora', serif; font-size: 24px; font-weight: 600; letter-spacing: -0.3px; margin-bottom: 8px; }
+  .section-sub { font-size: 15px; color: var(--text-muted); font-weight: 300; margin-bottom: 28px; }
+
+  .timeline { position: relative; padding-left: 28px; }
+  .timeline::before { content: ''; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 1px; background: var(--border); }
+  .timeline-item { position: relative; margin-bottom: 28px; }
+  .timeline-item:last-child { margin-bottom: 0; }
+  .timeline-dot { position: absolute; left: -28px; top: 5px; width: 15px; height: 15px; border-radius: 50%; border: 2px solid var(--bg); }
+  .dot-past    { background: var(--border-strong); }
+  .dot-current { background: var(--score-amber); box-shadow: 0 0 0 3px rgba(186,117,23,0.15); }
+  .dot-future  { background: var(--accent-mid); box-shadow: 0 0 0 3px rgba(29,158,117,0.15); }
+  .timeline-date { font-size: 12px; color: var(--text-faint); margin-bottom: 4px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; }
+  .timeline-title { font-size: 15px; font-weight: 500; margin-bottom: 6px; }
+  .timeline-desc { font-size: 13px; color: var(--text-muted); line-height: 1.6; font-weight: 300; }
+
+  /* EXPLAINER */
+  .explainer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 48px; }
+  .explainer-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; }
+  .explainer-card.highlight-amber { border-color: #FAC775; background: #FFFCF5; }
+  .explainer-card.highlight-green { border-color: #9FE1CB; background: #F8FFFC; }
+  .explainer-card.highlight-red   { border-color: #F7C1C1; background: #FFF8F8; }
+  .explainer-card.highlight-blue  { border-color: #B5D4F4; background: #F5F9FF; }
+  .explainer-badge { display: inline-block; font-size: 11px; font-weight: 500; padding: 3px 10px; border-radius: 100px; margin-bottom: 12px; }
+  .badge-cat1  { background: var(--accent-light); color: var(--accent); border: 1px solid #9FE1CB; }
+  .badge-cat2  { background: #FAEEDA; color: #854F0B; border: 1px solid #FAC775; }
+  .badge-approved { background: #E6F1FB; color: #185FA5; border: 1px solid #B5D4F4; }
+  .badge-banned { background: #FCEBEB; color: #A32D2D; border: 1px solid #F7C1C1; }
+  .explainer-card h3 { font-size: 16px; font-weight: 500; margin-bottom: 8px; }
+  .explainer-card p { font-size: 13px; color: var(--text-muted); line-height: 1.65; font-weight: 300; }
+  .explainer-card ul { list-style: none; margin-top: 12px; display: flex; flex-direction: column; gap: 6px; }
+  .explainer-card li { font-size: 13px; color: var(--text-muted); font-weight: 300; display: flex; align-items: flex-start; gap: 8px; }
+  .explainer-card li::before { content: '→'; color: var(--accent); flex-shrink: 0; }
+
+  /* MAIN TABLE */
+  .table-wrap { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-bottom: 48px; }
+  .table-header { padding: 20px 24px 16px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+  .table-header h2 { font-family: 'Lora', serif; font-size: 20px; font-weight: 600; }
+  .filter-group { display: flex; gap: 6px; flex-wrap: wrap; }
+  .filter-btn { font-size: 12px; padding: 5px 12px; border-radius: 100px; border: 1px solid var(--border); background: transparent; cursor: pointer; font-family: 'DM Sans', sans-serif; color: var(--text-muted); transition: all 0.15s; }
+  .filter-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .filter-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+  .reg-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  .reg-table th { text-align: left; font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.6px; color: var(--text-faint); padding: 12px 20px; border-bottom: 1px solid var(--border); background: var(--bg-subtle); }
+  .reg-table td { padding: 16px 20px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+  .reg-table tr:last-child td { border-bottom: none; }
+  .reg-table tr:hover td { background: #FAFAF5; }
+  .reg-table tr { transition: background 0.1s; }
+
+  .peptide-cell { display: flex; flex-direction: column; gap: 2px; }
+  .peptide-cell-name { font-weight: 500; font-size: 14px; }
+  .peptide-cell-aka  { font-size: 12px; color: var(--text-faint); }
+  .peptide-link { text-decoration: none; color: inherit; }
+  .peptide-link:hover .peptide-cell-name { color: var(--accent); }
+
+  .status-pill { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 500; padding: 4px 11px; border-radius: 100px; white-space: nowrap; }
+  .status-pill::before { content: ''; width: 6px; height: 6px; border-radius: 50%; display: inline-block; flex-shrink: 0; }
+  .pill-pending    { background: #FAEEDA; color: #854F0B; } .pill-pending::before    { background: #EF9F27; }
+  .pill-review     { background: #E6F1FB; color: #185FA5; } .pill-review::before     { background: #378ADD; }
+  .pill-approved   { background: var(--accent-light); color: var(--accent); } .pill-approved::before   { background: var(--accent-mid); }
+  .pill-restricted { background: #FCEBEB; color: #A32D2D; } .pill-restricted::before { background: #E24B4A; }
+
+  .yes-pill { display: inline-block; font-size: 11px; font-weight: 500; padding: 2px 8px; border-radius: 100px; }
+  .yes-banned { background: #FCEBEB; color: #A32D2D; }
+  .no-banned  { background: var(--accent-light); color: var(--accent); }
+
+  .notes-cell { font-size: 12px; color: var(--text-muted); font-weight: 300; max-width: 280px; line-height: 1.5; }
+
+  /* FAQ */
+  .faq-section { margin-bottom: 48px; }
+  .faq-list { display: flex; flex-direction: column; gap: 8px; }
+  .faq-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+  .faq-question { padding: 18px 22px; font-size: 15px; font-weight: 500; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; transition: background 0.15s; user-select: none; }
+  .faq-question:hover { background: var(--bg-subtle); }
+  .faq-arrow { color: var(--text-faint); font-size: 18px; transition: transform 0.2s; flex-shrink: 0; }
+  .faq-item.open .faq-arrow { transform: rotate(180deg); }
+  .faq-answer { padding: 0 22px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; }
+  .faq-item.open .faq-answer { max-height: 300px; padding: 0 22px 18px; }
+  .faq-answer p { font-size: 14px; color: var(--text-muted); line-height: 1.7; font-weight: 300; }
+
+  /* ALERT BOX */
+  .alert-box { background: #FAEEDA; border: 1px solid #FAC775; border-radius: var(--radius); padding: 20px 24px; margin-bottom: 48px; display: flex; gap: 16px; align-items: flex-start; }
+  .alert-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+  .alert-title { font-size: 15px; font-weight: 500; color: #6B3A00; margin-bottom: 6px; }
+  .alert-text { font-size: 13px; color: #854F0B; line-height: 1.65; font-weight: 300; }
+
+  /* FOOTER */
+  .divider { height: 1px; background: var(--border); max-width: 1100px; margin: 0 auto; }
+  footer { border-top: 1px solid var(--border); padding: 40px 2rem; max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+  .footer-logo { font-family: 'Lora', serif; font-size: 17px; font-weight: 600; color: var(--text); text-decoration: none; }
+  .footer-logo span { color: var(--accent); }
+  .footer-links { display: flex; gap: 24px; list-style: none; flex-wrap: wrap; }
+  .footer-links a { font-size: 13px; color: var(--text-faint); text-decoration: none; transition: color 0.15s; }
+  .footer-links a:hover { color: var(--text); }
+  .footer-copy { font-size: 12px; color: var(--text-faint); }
+
+  @media (max-width: 768px) {
+    .summary-grid { grid-template-columns: 1fr 1fr; }
+    .explainer-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    .reg-table th:nth-child(4), .reg-table td:nth-child(4) { display: none; }
+    .reg-table th:nth-child(5), .reg-table td:nth-child(5) { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">Pep<span>Cover</span></a>
+  <ul class="nav-links">
+    <li><a href="/peptides">Peptides</a></li>
+    <li><a href="/regulation" class="active">Regulation</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/pro" class="nav-cta">Get Pro</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="hero-badge">Regulatory update — RFK announcement Feb 2026</div>
+  <h1>Peptide Regulation Tracker</h1>
+  <p>The FDA landscape is changing fast. This page tracks the current legal status of every major peptide — updated manually on every official regulatory change.</p>
+  <div class="last-updated">
+    <div class="live-dot"></div>
+    Last updated April 7, 2026 · Next expected update when FDA publishes formal list
+  </div>
+</div>
+
+<div class="page-wrap">
+
+  <!-- ALERT -->
+  <div class="alert-box">
+    <div class="alert-icon">⚠️</div>
+    <div>
+      <div class="alert-title">Important — announcement vs formal change</div>
+      <div class="alert-text">On February 27, 2026, HHS Secretary RFK Jr. announced on the Joe Rogan podcast that approximately 14 peptides would return to legal compounding status. As of April 2026, the FDA has not published a formal updated list. The legal status shown below reflects the current official FDA position — not the anticipated change. We will update this page immediately when the formal FDA list is published.</div>
+    </div>
+  </div>
+
+  <!-- SUMMARY CARDS -->
+  <div class="summary-grid">
+    <div class="summary-card">
+      <div class="summary-num num-amber">14</div>
+      <div class="summary-label">Reclassification announced</div>
+    </div>
+    <div class="summary-card">
+      <div class="summary-num num-red">5</div>
+      <div class="summary-label">Expected to remain restricted</div>
+    </div>
+    <div class="summary-card">
+      <div class="summary-num num-blue">5</div>
+      <div class="summary-label">Under PCAC review</div>
+    </div>
+    <div class="summary-card">
+      <div class="summary-num num-green">80+</div>
+      <div class="summary-label">FDA approved peptide drugs</div>
+    </div>
+  </div>
+
+  <!-- TIMELINE -->
+  <div class="timeline-section">
+    <p class="section-label">Regulatory History</p>
+    <h2 class="section-title">How we got here</h2>
+    <p class="section-sub">The peptide regulatory situation has changed significantly in a short time.</p>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot dot-past"></div>
+        <div class="timeline-date">Pre-2023</div>
+        <div class="timeline-title">Peptides available through compounding pharmacies</div>
+        <div class="timeline-desc">Licensed compounding pharmacies could legally prepare many peptides with a physician's prescription. BPC-157, TB-500, CJC-1295, and others were routinely prescribed by longevity and sports medicine clinics.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot dot-past"></div>
+        <div class="timeline-date">Late 2023</div>
+        <div class="timeline-title">FDA moves 19 peptides to Category 2 — compounding banned</div>
+        <div class="timeline-desc">The FDA classified 19 widely-used peptides as Category 2 bulk drug substances, citing safety concerns and insufficient evidence. Compounding pharmacies were required to stop preparing them. Critics argued the FDA overstepped, noting no specific safety signal justified the broad restriction.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot dot-past"></div>
+        <div class="timeline-date">September 2024</div>
+        <div class="timeline-title">5 peptides referred to PCAC for review</div>
+        <div class="timeline-desc">CJC-1295, Ipamorelin, Thymosin Alpha-1, AOD-9604, and Selank were referred to the Pharmacy Compounding Advisory Committee — the first step toward potential Category 1 reclassification. This was a significant positive signal but not a change in legal status.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot dot-past"></div>
+        <div class="timeline-date">March 2025</div>
+        <div class="timeline-title">Compounding of tirzepatide banned</div>
+        <div class="timeline-desc">Compounding pharmacies lost the ability to compound tirzepatide as the drug shortage designation was lifted. This pushed more demand underground and reinforced concerns about the FDA's approach to peptide access.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot dot-current"></div>
+        <div class="timeline-date">February 27, 2026 — Current situation</div>
+        <div class="timeline-title">RFK announces reclassification of approximately 14 peptides</div>
+        <div class="timeline-desc">HHS Secretary Robert F. Kennedy Jr. announced on the Joe Rogan Experience that approximately 14 of the 19 restricted peptides would return to Category 1 status within "a couple of weeks." The announcement generated immediate consumer interest — but the formal FDA update has not been published. Legal status remains technically unchanged.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot dot-future"></div>
+        <div class="timeline-date">Expected — weeks to months from February 2026</div>
+        <div class="timeline-title">Formal FDA reclassification published</div>
+        <div class="timeline-desc">When the FDA formally publishes the updated Category 1 list, licensed compounding pharmacies will be able to legally prepare the reclassified peptides with a physician's prescription. This page will be updated immediately.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXPLAINER -->
+  <div class="timeline-section">
+    <p class="section-label">How FDA categories work</p>
+    <h2 class="section-title">Understanding the categories</h2>
+    <p class="section-sub">These categories apply to compounding pharmacies — not to FDA drug approval, which is a completely separate process.</p>
+
+    <div class="explainer-grid">
+      <div class="explainer-card highlight-green">
+        <span class="explainer-badge badge-cat1">Category 1</span>
+        <h3>Category 1 — Legal to compound</h3>
+        <p>Substances on the Category 1 list can be legally prepared by licensed 503A compounding pharmacies with a valid patient-specific prescription from a licensed physician.</p>
+        <ul>
+          <li>Requires physician prescription</li>
+          <li>Must use licensed compounding pharmacy</li>
+          <li>Does NOT mean FDA approved drug</li>
+          <li>Quality depends on the pharmacy</li>
+        </ul>
+      </div>
+      <div class="explainer-card highlight-amber">
+        <span class="explainer-badge badge-cat2">Category 2</span>
+        <h3>Category 2 — Cannot be compounded</h3>
+        <p>Substances the FDA has determined present potential safety risks or have insufficient evidence to permit compounding. Pharmacies cannot legally prepare them.</p>
+        <ul>
+          <li>Cannot be legally compounded</li>
+          <li>Often sold as "research chemicals" — gray market</li>
+          <li>No pharmacy-grade quality control</li>
+          <li>Subject to change via reclassification</li>
+        </ul>
+      </div>
+      <div class="explainer-card highlight-blue">
+        <span class="explainer-badge badge-approved">FDA Approved</span>
+        <h3>FDA Approved — Full drug approval</h3>
+        <p>Completely separate from compounding categories. FDA-approved peptide drugs have completed Phase I-III clinical trials and received formal New Drug Application approval.</p>
+        <ul>
+          <li>Examples: Semaglutide, Tirzepatide, Insulin</li>
+          <li>Proven safety and efficacy in large trials</li>
+          <li>Available via standard prescription</li>
+          <li>80+ peptide drugs are FDA approved</li>
+        </ul>
+      </div>
+      <div class="explainer-card highlight-red">
+        <span class="explainer-badge badge-banned">WADA Banned</span>
+        <h3>WADA Banned — Sports prohibition</h3>
+        <p>The World Anti-Doping Agency separately prohibits many peptides for competitive athletes. WADA bans are independent of FDA categories.</p>
+        <ul>
+          <li>Applies to competitive athletes only</li>
+          <li>Does not affect civilian legal status</li>
+          <li>TB-500, CJC-1295, Ipamorelin are banned</li>
+          <li>Testing is increasingly sophisticated</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN TABLE -->
+  <div class="table-wrap">
+    <div class="table-header">
+      <h2>Full peptide status table</h2>
+      <div class="filter-group">
+        <button class="filter-btn active" onclick="filterTable('all')">All</button>
+        <button class="filter-btn" onclick="filterTable('pending')">Reclassification pending</button>
+        <button class="filter-btn" onclick="filterTable('review')">Under review</button>
+        <button class="filter-btn" onclick="filterTable('restricted')">Restricted</button>
+      </div>
+    </div>
+    <div style="overflow-x: auto;">
+      <table class="reg-table" id="regTable">
+        <thead>
+          <tr>
+            <th>Peptide</th>
+            <th>FDA Category</th>
+            <th>US Status</th>
+            <th>WADA Banned</th>
+            <th>Rx Required</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody id="regTableBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq-section">
+    <p class="section-label">Common questions</p>
+    <h2 class="section-title">Frequently asked</h2>
+    <p class="section-sub" style="margin-bottom: 24px;">Straight answers to the most common regulatory questions.</p>
+
+    <div class="faq-list" id="faqList"></div>
+  </div>
+
+  <!-- DISCLAIMER -->
+  <div class="alert-box" style="background: var(--bg-subtle); border-color: var(--border);">
+    <div class="alert-icon">📋</div>
+    <div>
+      <div class="alert-title" style="color: var(--text);">Legal disclaimer</div>
+      <div class="alert-text" style="color: var(--text-muted);">This page provides general regulatory information for educational purposes only. It is not legal advice. Peptide regulations change frequently and vary by jurisdiction. Always verify current legal status with a licensed compounding pharmacy or healthcare provider before purchasing, prescribing, or using any peptide compound. PepCover is not responsible for actions taken based on this information.</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="divider"></div>
+<footer>
+  <a href="/" class="footer-logo">Pep<span>Cover</span></a>
+  <ul class="footer-links">
+    <li><a href="/peptides">Peptides</a></li>
+    <li><a href="/regulation">Regulation</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/disclaimer">Disclaimer</a></li>
+  </ul>
+  <p class="footer-copy">© 2026 PepCover. Not medical or legal advice.</p>
+</footer>
+
+<script>
+const peptides = [
+  { name: "BPC-157", aka: "Body Protection Compound", slug: "bpc-157", category: "Category 2", status: "pending", statusLabel: "Reclassification Pending", wada: false, rx: true, notes: "RFK announced return to Cat 1, Feb 2026. Formal FDA update pending." },
+  { name: "TB-500", aka: "Thymosin Beta-4 Fragment", slug: "tb-500", category: "Category 2", status: "pending", statusLabel: "Reclassification Pending", wada: true, rx: true, notes: "WADA prohibited. Expected Cat 1 via RFK announcement." },
+  { name: "GHK-Cu", aka: "Copper Peptide", slug: "ghk-cu", category: "Category 2", status: "pending", statusLabel: "Reclassification Pending", wada: false, rx: true, notes: "Expected Cat 1. Also widely used in cosmetics (unaffected)." },
+  { name: "Semax", aka: "ACTH Fragment Analogue", slug: "semax", category: "Category 2", status: "pending", statusLabel: "Reclassification Pending", wada: false, rx: true, notes: "Approved in Russia. Expected US reclassification." },
+  { name: "MOTS-c", aka: "Mitochondrial Peptide", slug: "mots-c", category: "Category 2", status: "pending", statusLabel: "Reclassification Pending", wada: false, rx: true, notes: "Longevity peptide. Expected Cat 1 via Feb 2026 announcement." },
+  { name: "KPV", aka: "Tripeptide Fragment", slug: null, category: "Category 2", status: "pending", statusLabel: "Reclassification Pending", wada: false, rx: true, notes: "Anti-inflammatory gut peptide. Expected Cat 1." },
+  { name: "CJC-1295", aka: "GHRH Analogue", slug: "cjc-1295", category: "Category 2", status: "review", statusLabel: "Under PCAC Review", wada: true, rx: true, notes: "Referred to PCAC Sep 2024. First step toward Cat 1." },
+  { name: "Ipamorelin", aka: "GH Secretagogue", slug: "ipamorelin", category: "Category 2", status: "review", statusLabel: "Under PCAC Review", wada: true, rx: true, notes: "Referred to PCAC Sep 2024. Had Phase IIb clinical trial history." },
+  { name: "Thymosin Alpha-1", aka: "Tα1 / Thymalfasin", slug: "thymosin-alpha-1", category: "Category 2", status: "review", statusLabel: "Under PCAC Review", wada: false, rx: true, notes: "Approved in 35+ countries. PCAC review expected to result in Cat 1." },
+  { name: "AOD-9604", aka: "HGH Fragment 176-191", slug: "aod-9604", category: "Category 2", status: "review", statusLabel: "Under PCAC Review", wada: false, rx: true, notes: "Referred to PCAC Sep 2024. Had Phase III trial history." },
+  { name: "Selank", aka: "Tuftsin Analogue", slug: "selank", category: "Category 2", status: "review", statusLabel: "Under PCAC Review", wada: false, rx: true, notes: "Referred to PCAC Sep 2024. Approved in Russia." },
+  { name: "Epithalon", aka: "Tetrapeptide", slug: null, category: "Category 2", status: "pending", statusLabel: "Reclassification Pending", wada: false, rx: true, notes: "Anti-aging peptide. Expected Cat 1 via Feb 2026." },
+  { name: "Melanotan II", aka: "MT-II", slug: null, category: "Category 2", status: "restricted", statusLabel: "Expected to Remain Restricted", wada: false, rx: true, notes: "Associated with skin cancer risk. Likely to remain Cat 2." },
+  { name: "GHRP-2", aka: "Growth Hormone Releasing Peptide-2", slug: null, category: "Category 2", status: "restricted", statusLabel: "Expected to Remain Restricted", wada: true, rx: true, notes: "Complex side effect profile including cortisol elevation." },
+  { name: "GHRP-6", aka: "Growth Hormone Releasing Peptide-6", slug: null, category: "Category 2", status: "restricted", statusLabel: "Expected to Remain Restricted", wada: true, rx: true, notes: "Strong hunger stimulation side effects. Likely Cat 2." },
+  { name: "Semaglutide (compounded)", aka: "GLP-1 Receptor Agonist", slug: null, category: "Approved drug", status: "restricted", statusLabel: "Compounding Restricted", wada: false, rx: true, notes: "FDA-approved drug. Compounding restricted since shortage lifted early 2025." },
+  { name: "Sermorelin", aka: "GHRH 1-29", slug: null, category: "Category 1", status: "approved", statusLabel: "Legal to Compound", wada: false, rx: true, notes: "Already Category 1. Never restricted. Widely available via compounding." },
+  { name: "Tesamorelin", aka: "GHRH Analogue", slug: null, category: "Category 2", status: "pending", statusLabel: "Reclassification Pending", wada: false, rx: true, notes: "FDA approved for HIV lipodystrophy. Expected Cat 1 for compounding." },
+];
+
+const statusConfig = {
+  pending:    { label: "Reclassification Pending", cls: "pill-pending" },
+  review:     { label: "Under PCAC Review",        cls: "pill-review"  },
+  approved:   { label: "Legal to Compound",        cls: "pill-approved"},
+  restricted: { label: "Restricted",               cls: "pill-restricted" },
+};
+
+let currentFilter = 'all';
+
+function renderTable(filter) {
+  const tbody = document.getElementById('regTableBody');
+  const filtered = filter === 'all' ? peptides : peptides.filter(p => p.status === filter);
+
+  tbody.innerHTML = filtered.map(p => {
+    const sc = statusConfig[p.status];
+    const nameCell = p.slug
+      ? `<a href="/peptides/${p.slug}" class="peptide-link"><div class="peptide-cell"><div class="peptide-cell-name">${p.name}</div><div class="peptide-cell-aka">${p.aka}</div></div></a>`
+      : `<div class="peptide-cell"><div class="peptide-cell-name">${p.name}</div><div class="peptide-cell-aka">${p.aka}</div></div>`;
+
+    return `<tr data-status="${p.status}">
+      <td>${nameCell}</td>
+      <td><span style="font-size:13px; color:var(--text-muted)">${p.category}</span></td>
+      <td><span class="status-pill ${sc.cls}">${sc.label}</span></td>
+      <td><span class="yes-pill ${p.wada ? 'yes-banned' : 'no-banned'}">${p.wada ? 'Yes' : 'No'}</span></td>
+      <td><span style="font-size:13px; color:var(--text-muted)">${p.rx ? 'Yes' : 'No'}</span></td>
+      <td class="notes-cell">${p.notes}</td>
+    </tr>`;
+  }).join('');
+}
+
+function filterTable(filter) {
+  currentFilter = filter;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  renderTable(filter);
+}
+
+const faqs = [
+  {
+    q: "Does RFK's announcement mean peptides are legal now?",
+    a: "Not yet — not officially. RFK announced his intention to reclassify peptides, but the FDA has not published a formal updated list as of April 2026. Until the FDA formally updates the Category 1 list, the legal status remains technically unchanged. We will update this tracker the moment the official change is published."
+  },
+  {
+    q: "What is the difference between Category 1 reclassification and FDA approval?",
+    a: "They are completely different. Category 1 reclassification means a compound can be legally prepared by licensed compounding pharmacies with a prescription — it says nothing about whether the compound is safe or effective. FDA drug approval requires completing Phase I, II, and III clinical trials demonstrating safety and efficacy for a specific condition. None of the peptides expected to be reclassified have gone through this process."
+  },
+  {
+    q: "Can I buy peptides online right now?",
+    a: "Many websites sell peptides labeled as 'research chemicals' or 'for research use only.' This is a legal gray area — possession of most peptides is not illegal (they are not DEA scheduled substances), but selling them as drugs without FDA approval is. Products sold outside licensed compounding pharmacies have no quality control — FDA testing has found that up to 40% of online peptide products contain incorrect dosages or undeclared ingredients."
+  },
+  {
+    q: "Do I need a prescription to get peptides?",
+    a: "Once the expected reclassification happens, you will need a prescription from a licensed physician to obtain peptides through a licensed compounding pharmacy. This is not the same as going to a regular pharmacy — you need to work with a physician who is willing to prescribe, and a compounding pharmacy that carries the peptide. Many telehealth platforms and longevity clinics offer this service."
+  },
+  {
+    q: "Are growth hormone peptides the same as HGH?",
+    a: "No. Human growth hormone (HGH) itself is a 191 amino acid protein — technically too large to be called a peptide. Growth hormone secretagogues like CJC-1295 and Ipamorelin are peptides that signal your pituitary gland to produce and release more of your own growth hormone. They do not contain HGH — they stimulate its production. This distinction matters both mechanistically and legally."
+  },
+  {
+    q: "What happens to the 5 peptides that stay restricted?",
+    a: "Approximately 5 of the original 19 restricted peptides are expected to remain on the Category 2 list, likely including Melanotan II (skin cancer risk concerns), GHRP-2 and GHRP-6 (complex side effect profiles), and others with more significant safety signals. These will continue to be unavailable through licensed compounding pharmacies."
+  },
+  {
+    q: "Is BPC-157 legal to possess?",
+    a: "Possessing BPC-157 is not explicitly illegal in the US — it is not a DEA scheduled substance. However, selling it as a drug without FDA approval is illegal, and purchasing it from unregulated sources carries quality risks. Once it is formally reclassified to Category 1, it will be legally obtainable through a licensed compounding pharmacy with a physician's prescription."
+  }
+];
+
+function renderFAQ() {
+  const list = document.getElementById('faqList');
+  list.innerHTML = faqs.map((f, i) => `
+    <div class="faq-item" id="faq-${i}">
+      <div class="faq-question" onclick="toggleFAQ(${i})">
+        <span>${f.q}</span>
+        <span class="faq-arrow">↓</span>
+      </div>
+      <div class="faq-answer"><p>${f.a}</p></div>
+    </div>
+  `).join('');
+}
+
+function toggleFAQ(i) {
+  const item = document.getElementById(`faq-${i}`);
+  item.classList.toggle('open');
+}
+
+renderTable('all');
+renderFAQ();
+</script>
+</body>
+</html>

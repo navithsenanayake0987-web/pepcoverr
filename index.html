@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PepCover — Evidence-Based Peptide Research</title>
+<meta name="description" content="The most trusted peptide research platform. What the science says. What real people experience. In one place.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #FAFAF8;
+    --bg-card: #FFFFFF;
+    --bg-subtle: #F4F4F0;
+    --text: #1C1C1A;
+    --text-muted: #6B6B65;
+    --text-faint: #A0A09A;
+    --accent: #0F6E56;
+    --accent-light: #E1F5EE;
+    --accent-mid: #1D9E75;
+    --border: #E4E4DE;
+    --border-strong: #CECEC6;
+    --score-green: #1D9E75;
+    --score-amber: #BA7517;
+    --score-red: #A32D2D;
+    --radius: 10px;
+    --radius-sm: 6px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(250,250,248,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    font-family: 'Lora', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text);
+    text-decoration: none;
+    letter-spacing: -0.3px;
+  }
+
+  .nav-logo span { color: var(--accent); }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 14px;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .nav-links a:hover { color: var(--text); }
+
+  .nav-cta {
+    background: var(--text);
+    color: #fff !important;
+    padding: 8px 18px;
+    border-radius: var(--radius-sm);
+    font-size: 13px !important;
+    font-weight: 500;
+    transition: opacity 0.15s !important;
+  }
+
+  .nav-cta:hover { opacity: 0.8; color: #fff !important; }
+
+  /* ── HERO ── */
+  .hero {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 96px 2rem 80px;
+    text-align: center;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--accent-light);
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 500;
+    padding: 5px 12px;
+    border-radius: 100px;
+    margin-bottom: 28px;
+    border: 1px solid #9FE1CB;
+  }
+
+  .hero-badge::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--accent-mid);
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  .hero h1 {
+    font-family: 'Lora', serif;
+    font-size: clamp(36px, 6vw, 56px);
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+    color: var(--text);
+    margin-bottom: 20px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-sub {
+    font-size: 17px;
+    color: var(--text-muted);
+    max-width: 520px;
+    margin: 0 auto 40px;
+    line-height: 1.65;
+    font-weight: 300;
+  }
+
+  .search-wrap {
+    display: flex;
+    max-width: 520px;
+    margin: 0 auto 48px;
+    border: 1.5px solid var(--border-strong);
+    border-radius: var(--radius);
+    background: var(--bg-card);
+    overflow: hidden;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+
+  .search-wrap:focus-within {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(15,110,86,0.08);
+  }
+
+  .search-wrap input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 14px 18px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    background: transparent;
+    color: var(--text);
+  }
+
+  .search-wrap input::placeholder { color: var(--text-faint); }
+
+  .search-wrap button {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    padding: 0 22px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.15s;
+    white-space: nowrap;
+  }
+
+  .search-wrap button:hover { background: #0a5442; }
+
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+
+  .hero-stat { text-align: center; }
+
+  .hero-stat-num {
+    font-family: 'Lora', serif;
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--text);
+    display: block;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .hero-stat-label {
+    font-size: 12px;
+    color: var(--text-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+  }
+
+  .stat-divider {
+    width: 1px;
+    background: var(--border);
+    height: 36px;
+    align-self: center;
+  }
+
+  /* ── SECTION LABEL ── */
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+
+  /* ── PEPTIDES GRID ── */
+  .section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 64px 2rem;
+  }
+
+  .section-header {
+    margin-bottom: 36px;
+  }
+
+  .section-header h2 {
+    font-family: 'Lora', serif;
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: -0.3px;
+    margin-bottom: 8px;
+  }
+
+  .section-header p {
+    font-size: 15px;
+    color: var(--text-muted);
+    font-weight: 300;
+  }
+
+  .peptides-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px;
+  }
+
+  .peptide-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 22px 24px;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: border-color 0.15s, transform 0.15s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .peptide-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  .peptide-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 14px;
+  }
+
+  .peptide-name {
+    font-family: 'Lora', serif;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -0.2px;
+    margin-bottom: 3px;
+  }
+
+  .peptide-aka {
+    font-size: 12px;
+    color: var(--text-faint);
+  }
+
+  .legal-badge {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 9px;
+    border-radius: 100px;
+    white-space: nowrap;
+  }
+
+  .legal-pending {
+    background: #FAEEDA;
+    color: #854F0B;
+    border: 1px solid #FAC775;
+  }
+
+  .legal-restricted {
+    background: #FCEBEB;
+    color: #A32D2D;
+    border: 1px solid #F7C1C1;
+  }
+
+  .legal-ok {
+    background: var(--accent-light);
+    color: var(--accent);
+    border: 1px solid #9FE1CB;
+  }
+
+  .peptide-desc {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.55;
+    margin-bottom: 18px;
+    font-weight: 300;
+  }
+
+  .peptide-scores {
+    display: flex;
+    gap: 12px;
+  }
+
+  .score-box {
+    flex: 1;
+    background: var(--bg-subtle);
+    border-radius: var(--radius-sm);
+    padding: 10px 12px;
+  }
+
+  .score-box-label {
+    font-size: 10px;
+    color: var(--text-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+
+  .score-box-value {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1;
+    margin-bottom: 5px;
+  }
+
+  .score-bar {
+    height: 3px;
+    background: var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .score-bar-fill {
+    height: 100%;
+    border-radius: 2px;
+    transition: width 0.6s ease;
+  }
+
+  .score-green { color: var(--score-green); }
+  .score-amber { color: var(--score-amber); }
+  .score-red   { color: var(--score-red);   }
+  .fill-green  { background: var(--score-green); }
+  .fill-amber  { background: var(--score-amber); }
+  .fill-red    { background: var(--score-red);   }
+
+  .peptide-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+  }
+
+  .peptide-tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    font-size: 11px;
+    color: var(--text-muted);
+    background: var(--bg-subtle);
+    padding: 3px 8px;
+    border-radius: 100px;
+  }
+
+  .peptide-arrow {
+    color: var(--text-faint);
+    font-size: 16px;
+    transition: transform 0.15s, color 0.15s;
+  }
+
+  .peptide-card:hover .peptide-arrow {
+    transform: translateX(4px);
+    color: var(--accent);
+  }
+
+  /* ── HOW IT WORKS ── */
+  .how-section {
+    background: var(--bg-subtle);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .how-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 32px;
+  }
+
+  .how-step { position: relative; }
+
+  .how-num {
+    font-family: 'Lora', serif;
+    font-size: 42px;
+    font-weight: 600;
+    color: var(--border-strong);
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+
+  .how-step h3 {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+
+  .how-step p {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  /* ── SCORES EXPLAINER ── */
+  .scores-explainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  @media (max-width: 680px) {
+    .scores-explainer { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    .hero-stats { gap: 20px; }
+    .stat-divider { display: none; }
+  }
+
+  .explainer-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px;
+  }
+
+  .explainer-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    font-size: 18px;
+  }
+
+  .icon-science { background: #E6F1FB; }
+  .icon-community { background: var(--accent-light); }
+
+  .explainer-card h3 {
+    font-family: 'Lora', serif;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .explainer-card p {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.65;
+    font-weight: 300;
+    margin-bottom: 20px;
+  }
+
+  .evidence-levels {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .evidence-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+  }
+
+  .evidence-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .evidence-dot.strong  { background: var(--score-green); }
+  .evidence-dot.moderate{ background: var(--score-amber); }
+  .evidence-dot.limited { background: #CECEC6; }
+
+  .evidence-row span { color: var(--text-muted); font-weight: 300; }
+
+  /* ── REGULATION PREVIEW ── */
+  .reg-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+
+  .reg-table th {
+    text-align: left;
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: var(--text-faint);
+    padding: 0 16px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .reg-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+  }
+
+  .reg-table tr:last-child td { border-bottom: none; }
+  .reg-table tr:hover td { background: var(--bg-subtle); }
+
+  .reg-name { font-weight: 500; }
+  .reg-use { color: var(--text-muted); font-weight: 300; font-size: 13px; }
+
+  .status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 100px;
+  }
+
+  .status-pill::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  .status-pending  { background: #FAEEDA; color: #854F0B; }
+  .status-pending::before  { background: #EF9F27; }
+  .status-restricted { background: #FCEBEB; color: #A32D2D; }
+  .status-restricted::before { background: #E24B4A; }
+  .status-review   { background: #E6F1FB; color: #185FA5; }
+  .status-review::before   { background: #378ADD; }
+
+  /* ── CTA BANNER ── */
+  .cta-banner {
+    background: var(--text);
+    color: #fff;
+    border-radius: var(--radius);
+    padding: 52px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .cta-banner h2 {
+    font-family: 'Lora', serif;
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    letter-spacing: -0.3px;
+  }
+
+  .cta-banner p {
+    font-size: 15px;
+    color: rgba(255,255,255,0.6);
+    font-weight: 300;
+    max-width: 420px;
+  }
+
+  .email-form {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+  }
+
+  .email-form input {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: var(--radius-sm);
+    padding: 12px 16px;
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    outline: none;
+    width: 240px;
+    transition: border-color 0.15s;
+  }
+
+  .email-form input::placeholder { color: rgba(255,255,255,0.35); }
+  .email-form input:focus { border-color: rgba(255,255,255,0.5); }
+
+  .email-form button {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius-sm);
+    padding: 12px 22px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.15s;
+  }
+
+  .email-form button:hover { background: #0a5442; }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 40px 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-logo {
+    font-family: 'Lora', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .footer-logo span { color: var(--accent); }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+    flex-wrap: wrap;
+  }
+
+  .footer-links a {
+    font-size: 13px;
+    color: var(--text-faint);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .footer-links a:hover { color: var(--text); }
+
+  .footer-copy {
+    font-size: 12px;
+    color: var(--text-faint);
+  }
+
+  .divider {
+    height: 1px;
+    background: var(--border);
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">Pep<span>Cover</span></a>
+  <ul class="nav-links">
+    <li><a href="/peptides">Peptides</a></li>
+    <li><a href="/regulation">Regulation</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/pro" class="nav-cta">Get Pro</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">Updated April 2026 — RFK reclassification tracker live</div>
+  <h1>Peptide research you can actually <em>trust</em></h1>
+  <p class="hero-sub">What the science says. What real people experience. No affiliate links. No supplement sales. Just evidence.</p>
+
+  <div class="search-wrap">
+    <input type="text" placeholder="Search a peptide — BPC-157, GHK-Cu, Ipamorelin..." id="searchInput">
+    <button onclick="handleSearch()">Search</button>
+  </div>
+
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <span class="hero-stat-num">10</span>
+      <span class="hero-stat-label">Peptides covered</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="hero-stat">
+      <span class="hero-stat-num">2,400+</span>
+      <span class="hero-stat-label">Community reports</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="hero-stat">
+      <span class="hero-stat-num">0</span>
+      <span class="hero-stat-label">Affiliate links</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="hero-stat">
+      <span class="hero-stat-num">Live</span>
+      <span class="hero-stat-label">FDA tracker</span>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PEPTIDES GRID -->
+<section class="section">
+  <div class="section-header">
+    <p class="section-label">Peptide Database</p>
+    <h2>Most researched peptides</h2>
+    <p>Each page combines peer-reviewed studies with aggregated community reports — scored independently.</p>
+  </div>
+
+  <div class="peptides-grid" id="peptidesGrid"></div>
+</section>
+
+<div class="divider"></div>
+
+<!-- HOW IT WORKS -->
+<section class="how-section">
+  <div class="section">
+    <div class="section-header">
+      <p class="section-label">How it works</p>
+      <h2>Two layers of truth</h2>
+      <p>Most sites give you one or the other. We give you both.</p>
+    </div>
+
+    <div class="how-grid">
+      <div class="how-step">
+        <div class="how-num">01</div>
+        <h3>We read the research</h3>
+        <p>Every peptide page is built from peer-reviewed PubMed studies. We rate evidence strength honestly — including when it's only animal studies or a single small trial.</p>
+      </div>
+      <div class="how-step">
+        <div class="how-num">02</div>
+        <h3>We analyze community reports</h3>
+        <p>Our AI processes thousands of Reddit posts and forum discussions, extracting outcomes, dosages, and side effects into structured community scores. Updated automatically.</p>
+      </div>
+      <div class="how-step">
+        <div class="how-num">03</div>
+        <h3>We track regulation</h3>
+        <p>The FDA landscape is changing fast. Our regulation tracker is updated manually whenever there are official changes — so you always know the current legal status.</p>
+      </div>
+      <div class="how-step">
+        <div class="how-num">04</div>
+        <h3>You make informed decisions</h3>
+        <p>Ask our AI assistant anything. Get answers grounded in actual studies, not marketing copy — with citations you can verify yourself.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SCORES EXPLAINER -->
+<section class="section">
+  <div class="section-header">
+    <p class="section-label">Our scoring system</p>
+    <h2>What the scores mean</h2>
+    <p>Two independent scores. Neither replaces the other.</p>
+  </div>
+
+  <div class="scores-explainer">
+    <div class="explainer-card">
+      <div class="explainer-icon icon-science">🔬</div>
+      <h3>Science Score</h3>
+      <p>Rates the quality of published research. A low score doesn't mean the peptide doesn't work — it means we don't have enough human data yet to know.</p>
+      <div class="evidence-levels">
+        <div class="evidence-row">
+          <div class="evidence-dot strong"></div>
+          <span>Strong — multiple human RCTs with large sample sizes</span>
+        </div>
+        <div class="evidence-row">
+          <div class="evidence-dot moderate"></div>
+          <span>Moderate — small human trials or mixed results</span>
+        </div>
+        <div class="evidence-row">
+          <div class="evidence-dot limited"></div>
+          <span>Limited — animal studies only or very few humans tested</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="explainer-card">
+      <div class="explainer-icon icon-community">👥</div>
+      <h3>Community Score</h3>
+      <p>Aggregated from thousands of Reddit posts and forum reports. Shows what percentage of users report positive outcomes — broken down by use case.</p>
+      <div class="evidence-levels">
+        <div class="evidence-row">
+          <div class="evidence-dot strong"></div>
+          <span>Positive — user reported benefit or improvement</span>
+        </div>
+        <div class="evidence-row">
+          <div class="evidence-dot moderate"></div>
+          <span>Mixed — partial benefit or inconsistent results</span>
+        </div>
+        <div class="evidence-row">
+          <div class="evidence-dot limited"></div>
+          <span>Negative — no benefit or side effects reported</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- REGULATION TRACKER -->
+<section class="section">
+  <div class="section-header">
+    <p class="section-label">Regulation Tracker</p>
+    <h2>Current FDA status</h2>
+    <p>Updated manually on every official regulatory change. Last updated April 2026 following RFK announcement.</p>
+  </div>
+
+  <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden;">
+    <table class="reg-table">
+      <thead>
+        <tr>
+          <th>Peptide</th>
+          <th>Primary use</th>
+          <th>FDA Status</th>
+          <th>Prescription required</th>
+        </tr>
+      </thead>
+      <tbody id="regTableBody"></tbody>
+    </table>
+  </div>
+
+  <div style="margin-top: 16px; display: flex; justify-content: flex-end;">
+    <a href="/regulation" style="font-size: 13px; color: var(--accent); text-decoration: none; font-weight: 500;">View full regulation tracker →</a>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CTA -->
+<section class="section">
+  <div class="cta-banner">
+    <div>
+      <h2>Get research updates in your inbox</h2>
+      <p>Weekly digest of new peptide studies, FDA changes, and what the research actually says — no hype.</p>
+    </div>
+    <div class="email-form">
+      <input type="email" placeholder="your@email.com" id="emailInput">
+      <button onclick="handleEmailSignup()">Subscribe free</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="/" class="footer-logo">Pep<span>Cover</span></a>
+  <ul class="footer-links">
+    <li><a href="/peptides">Peptides</a></li>
+    <li><a href="/regulation">Regulation</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/disclaimer">Disclaimer</a></li>
+    <li><a href="/pro">Pro</a></li>
+  </ul>
+  <p class="footer-copy">© 2026 PepCover. Not medical advice.</p>
+</footer>
+
+<script>
+const peptides = [
+  {
+    name: "BPC-157",
+    aka: "Body Protection Compound",
+    slug: "bpc-157",
+    desc: "Synthetic peptide studied for tissue repair, gut healing, and tendon recovery.",
+    scienceScore: 4,
+    scienceLabel: "Limited",
+    scienceColor: "amber",
+    communityScore: 78,
+    communityColor: "green",
+    tags: ["Recovery", "Gut health", "Tendons"],
+    status: "pending",
+    statusLabel: "Reclassification Pending"
+  },
+  {
+    name: "TB-500",
+    aka: "Thymosin Beta-4 Fragment",
+    slug: "tb-500",
+    desc: "Studied for muscle repair, flexibility, and recovery from injury.",
+    scienceScore: 4,
+    scienceLabel: "Limited",
+    scienceColor: "amber",
+    communityScore: 72,
+    communityColor: "green",
+    tags: ["Muscle repair", "Recovery", "Flexibility"],
+    status: "pending",
+    statusLabel: "Reclassification Pending"
+  },
+  {
+    name: "GHK-Cu",
+    aka: "Copper Peptide",
+    slug: "ghk-cu",
+    desc: "Copper-binding peptide researched for skin regeneration, wound healing, and hair growth.",
+    scienceScore: 6,
+    scienceLabel: "Moderate",
+    scienceColor: "amber",
+    communityScore: 81,
+    communityColor: "green",
+    tags: ["Anti-aging", "Skin", "Hair growth"],
+    status: "pending",
+    statusLabel: "Reclassification Pending"
+  },
+  {
+    name: "CJC-1295",
+    aka: "Growth Hormone Releasing Hormone",
+    slug: "cjc-1295",
+    desc: "Growth hormone secretagogue. Studied for metabolism, sleep quality, and lean muscle.",
+    scienceScore: 5,
+    scienceLabel: "Moderate",
+    scienceColor: "amber",
+    communityScore: 68,
+    communityColor: "green",
+    tags: ["Growth hormone", "Sleep", "Metabolism"],
+    status: "review",
+    statusLabel: "Under PCAC Review"
+  },
+  {
+    name: "Ipamorelin",
+    aka: "Growth Hormone Secretagogue",
+    slug: "ipamorelin",
+    desc: "Selective growth hormone secretagogue. Often stacked with CJC-1295 for synergistic effects.",
+    scienceScore: 5,
+    scienceLabel: "Moderate",
+    scienceColor: "amber",
+    communityScore: 74,
+    communityColor: "green",
+    tags: ["Growth hormone", "Recovery", "Body composition"],
+    status: "review",
+    statusLabel: "Under PCAC Review"
+  },
+  {
+    name: "Semax",
+    aka: "Synthetic ACTH Fragment",
+    slug: "semax",
+    desc: "Neuropeptide studied for cognitive enhancement, focus, and neuroprotection.",
+    scienceScore: 5,
+    scienceLabel: "Moderate",
+    scienceColor: "amber",
+    communityScore: 76,
+    communityColor: "green",
+    tags: ["Cognitive", "Focus", "Neuroprotection"],
+    status: "pending",
+    statusLabel: "Reclassification Pending"
+  }
+];
+
+const regData = [
+  { name: "BPC-157",         use: "Tissue repair, gut healing",        status: "pending",    statusLabel: "Reclassification Pending", rx: "Yes" },
+  { name: "TB-500",          use: "Muscle repair, recovery",           status: "pending",    statusLabel: "Reclassification Pending", rx: "Yes" },
+  { name: "GHK-Cu",          use: "Skin, anti-aging, hair",            status: "pending",    statusLabel: "Reclassification Pending", rx: "Yes" },
+  { name: "CJC-1295",        use: "Growth hormone, metabolism",        status: "review",     statusLabel: "Under PCAC Review",        rx: "Yes" },
+  { name: "Ipamorelin",      use: "Growth hormone, body composition",  status: "review",     statusLabel: "Under PCAC Review",        rx: "Yes" },
+  { name: "Thymosin Alpha-1","use": "Immune support",                  status: "review",     statusLabel: "Under PCAC Review",        rx: "Yes" },
+  { name: "Selank",          use: "Anxiety, cognitive function",       status: "review",     statusLabel: "Under PCAC Review",        rx: "Yes" },
+];
+
+function renderPeptides() {
+  const grid = document.getElementById("peptidesGrid");
+  grid.innerHTML = peptides.map(p => `
+    <a href="/peptides/${p.slug}" class="peptide-card">
+      <div class="peptide-card-top">
+        <div>
+          <div class="peptide-name">${p.name}</div>
+          <div class="peptide-aka">${p.aka}</div>
+        </div>
+        <span class="legal-badge legal-pending">${p.statusLabel}</span>
+      </div>
+      <p class="peptide-desc">${p.desc}</p>
+      <div class="peptide-scores">
+        <div class="score-box">
+          <div class="score-box-label">Science Score</div>
+          <div class="score-box-value score-${p.scienceColor}">${p.scienceScore}/10</div>
+          <div class="score-bar">
+            <div class="score-bar-fill fill-${p.scienceColor}" style="width:${p.scienceScore * 10}%"></div>
+          </div>
+        </div>
+        <div class="score-box">
+          <div class="score-box-label">Community</div>
+          <div class="score-box-value score-${p.communityColor}">${p.communityScore}%</div>
+          <div class="score-bar">
+            <div class="score-bar-fill fill-${p.communityColor}" style="width:${p.communityScore}%"></div>
+          </div>
+        </div>
+      </div>
+      <div class="peptide-footer">
+        <div class="peptide-tags">
+          ${p.tags.map(t => `<span class="tag">${t}</span>`).join("")}
+        </div>
+        <span class="peptide-arrow">→</span>
+      </div>
+    </a>
+  `).join("");
+}
+
+function renderRegTable() {
+  const tbody = document.getElementById("regTableBody");
+  tbody.innerHTML = regData.map(r => `
+    <tr>
+      <td class="reg-name">${r.name}</td>
+      <td class="reg-use">${r.use}</td>
+      <td><span class="status-pill status-${r.status}">${r.statusLabel}</span></td>
+      <td style="color: var(--text-muted); font-size:13px;">${r.rx}</td>
+    </tr>
+  `).join("");
+}
+
+function handleSearch() {
+  const q = document.getElementById("searchInput").value.trim();
+  if (q) window.location.href = `/peptides?q=${encodeURIComponent(q)}`;
+}
+
+document.getElementById("searchInput").addEventListener("keydown", e => {
+  if (e.key === "Enter") handleSearch();
+});
+
+function handleEmailSignup() {
+  const email = document.getElementById("emailInput").value.trim();
+  if (email && email.includes("@")) {
+    document.getElementById("emailInput").value = "";
+    alert("You're on the list! We'll send research updates weekly.");
+  }
+}
+
+renderPeptides();
+renderRegTable();
+</script>
+</body>
+</html>
