@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Peptide Database — All Peptides | PepCover</title>
+<meta name="description" content="Browse all peptides on PepCover. Science scores, community scores, FDA status and full research breakdowns for BPC-157, TB-500, GHK-Cu and more.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #FAFAF8; --bg-card: #FFFFFF; --bg-subtle: #F4F4F0;
+    --text: #1C1C1A; --text-muted: #6B6B65; --text-faint: #A0A09A;
+    --accent: #0F6E56; --accent-light: #E1F5EE; --accent-mid: #1D9E75;
+    --border: #E4E4DE; --border-strong: #CECEC6;
+    --score-green: #1D9E75; --score-amber: #BA7517; --score-red: #A32D2D;
+    --radius: 10px; --radius-sm: 6px;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', -apple-system, sans-serif; background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(250,250,248,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 2rem; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+  .nav-logo { font-family: 'Lora', serif; font-size: 20px; font-weight: 600; color: var(--text); text-decoration: none; }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+  .nav-links a { font-size: 14px; color: var(--text-muted); text-decoration: none; transition: color 0.15s; }
+  .nav-links a:hover { color: var(--text); }
+  .nav-links a.active { color: var(--accent); font-weight: 500; }
+  .nav-cta { background: var(--text); color: #fff !important; padding: 8px 18px; border-radius: var(--radius-sm); font-size: 13px !important; font-weight: 500; }
+
+  /* HERO */
+  .page-hero { max-width: 720px; margin: 0 auto; padding: 64px 2rem 48px; text-align: center; }
+  .section-label { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 1.2px; color: var(--accent); margin-bottom: 10px; }
+  .page-hero h1 { font-family: 'Lora', serif; font-size: clamp(28px, 5vw, 42px); font-weight: 600; line-height: 1.15; letter-spacing: -0.4px; margin-bottom: 12px; }
+  .page-hero p { font-size: 16px; color: var(--text-muted); font-weight: 300; margin-bottom: 32px; line-height: 1.65; }
+
+  /* SEARCH */
+  .search-wrap { display: flex; max-width: 560px; margin: 0 auto 16px; border: 1.5px solid var(--border-strong); border-radius: var(--radius); background: var(--bg-card); overflow: hidden; transition: border-color 0.15s, box-shadow 0.15s; }
+  .search-wrap:focus-within { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(15,110,86,0.08); }
+  .search-wrap input { flex: 1; border: none; outline: none; padding: 14px 18px; font-family: 'DM Sans', sans-serif; font-size: 15px; background: transparent; color: var(--text); }
+  .search-wrap input::placeholder { color: var(--text-faint); }
+  .search-icon { padding: 0 18px; display: flex; align-items: center; color: var(--text-faint); font-size: 16px; }
+
+  .search-meta { font-size: 13px; color: var(--text-faint); text-align: center; margin-bottom: 8px; }
+
+  /* FILTERS */
+  .page-wrap { max-width: 1100px; margin: 0 auto; padding: 0 2rem 80px; }
+  .filters-bar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 28px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+  .filter-group { display: flex; gap: 6px; flex-wrap: wrap; }
+  .filter-btn { font-size: 12px; padding: 6px 14px; border-radius: 100px; border: 1px solid var(--border); background: transparent; cursor: pointer; font-family: 'DM Sans', sans-serif; color: var(--text-muted); transition: all 0.15s; }
+  .filter-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .filter-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+  .sort-select { font-size: 13px; padding: 7px 12px; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--bg-card); color: var(--text-muted); font-family: 'DM Sans', sans-serif; cursor: pointer; outline: none; }
+
+  .results-count { font-size: 13px; color: var(--text-faint); }
+
+  /* GRID */
+  .peptides-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 16px; }
+
+  .peptide-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px 24px; text-decoration: none; color: inherit; display: block; transition: border-color 0.15s, transform 0.15s; }
+  .peptide-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+
+  .peptide-card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
+  .peptide-name { font-family: 'Lora', serif; font-size: 18px; font-weight: 600; letter-spacing: -0.2px; margin-bottom: 3px; }
+  .peptide-aka { font-size: 12px; color: var(--text-faint); }
+
+  .legal-badge { font-size: 11px; font-weight: 500; padding: 3px 9px; border-radius: 100px; white-space: nowrap; }
+  .legal-pending    { background: #FAEEDA; color: #854F0B; border: 1px solid #FAC775; }
+  .legal-review     { background: #E6F1FB; color: #185FA5; border: 1px solid #B5D4F4; }
+  .legal-approved   { background: var(--accent-light); color: var(--accent); border: 1px solid #9FE1CB; }
+
+  .peptide-desc { font-size: 13px; color: var(--text-muted); line-height: 1.55; margin-bottom: 16px; font-weight: 300; }
+
+  .peptide-scores { display: flex; gap: 10px; margin-bottom: 14px; }
+  .score-box { flex: 1; background: var(--bg-subtle); border-radius: var(--radius-sm); padding: 10px 12px; }
+  .score-box-label { font-size: 10px; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+  .score-box-value { font-size: 18px; font-weight: 500; line-height: 1; margin-bottom: 5px; }
+  .score-bar { height: 3px; background: var(--border); border-radius: 2px; overflow: hidden; }
+  .score-bar-fill { height: 100%; border-radius: 2px; }
+
+  .score-green { color: var(--score-green); } .fill-green { background: var(--score-green); }
+  .score-amber { color: var(--score-amber); } .fill-amber { background: var(--score-amber); }
+
+  .peptide-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 14px; border-top: 1px solid var(--border); }
+  .peptide-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+  .tag { font-size: 11px; color: var(--text-muted); background: var(--bg-subtle); padding: 3px 8px; border-radius: 100px; }
+  .peptide-arrow { color: var(--text-faint); font-size: 16px; transition: transform 0.15s, color 0.15s; }
+  .peptide-card:hover .peptide-arrow { transform: translateX(4px); color: var(--accent); }
+
+  /* NO RESULTS */
+  .no-results { text-align: center; padding: 64px 24px; color: var(--text-faint); }
+  .no-results-icon { font-size: 40px; margin-bottom: 16px; }
+  .no-results h3 { font-size: 18px; font-weight: 500; color: var(--text-muted); margin-bottom: 8px; }
+  .no-results p { font-size: 14px; font-weight: 300; }
+
+  /* COMING SOON */
+  .coming-soon-section { margin-top: 56px; padding-top: 40px; border-top: 1px solid var(--border); }
+  .coming-soon-label { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 1.2px; color: var(--text-faint); margin-bottom: 16px; }
+  .coming-soon-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+  .coming-soon-pill { font-size: 13px; color: var(--text-faint); background: var(--bg-subtle); border: 1px dashed var(--border-strong); padding: 6px 14px; border-radius: 100px; }
+
+  footer { border-top: 1px solid var(--border); padding: 40px 2rem; max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+  .footer-logo { font-family: 'Lora', serif; font-size: 17px; font-weight: 600; color: var(--text); text-decoration: none; }
+  .footer-logo span { color: var(--accent); }
+  .footer-links { display: flex; gap: 24px; list-style: none; flex-wrap: wrap; }
+  .footer-links a { font-size: 13px; color: var(--text-faint); text-decoration: none; }
+  .footer-links a:hover { color: var(--text); }
+  .footer-copy { font-size: 12px; color: var(--text-faint); }
+
+  @media (max-width: 680px) {
+    .nav-links { display: none; }
+    .filters-bar { flex-direction: column; align-items: flex-start; }
+    .peptides-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">Pep<span>Cover</span></a>
+  <ul class="nav-links">
+    <li><a href="/peptides.html" class="active">Peptides</a></li>
+    <li><a href="/regulation.html">Regulation</a></li>
+    <li><a href="/about.html">About</a></li>
+    <li><a href="#" class="nav-cta">Get Pro</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <p class="section-label">Peptide Database</p>
+  <h1>All peptides</h1>
+  <p>Evidence-based research on every peptide. Science scores, community reports, FDA status, dosage guidance — all in one place.</p>
+
+  <div class="search-wrap">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="searchInput" placeholder="Search by name, use case, or effect — e.g. gut healing, anti-aging..." oninput="handleSearch()">
+  </div>
+  <div class="search-meta" id="searchMeta">Showing all 10 peptides</div>
+</div>
+
+<div class="page-wrap">
+
+  <div class="filters-bar">
+    <div class="filter-group">
+      <button class="filter-btn active" onclick="setFilter('all', this)">All</button>
+      <button class="filter-btn" onclick="setFilter('recovery', this)">Recovery</button>
+      <button class="filter-btn" onclick="setFilter('cognitive', this)">Cognitive</button>
+      <button class="filter-btn" onclick="setFilter('antiaging', this)">Anti-aging</button>
+      <button class="filter-btn" onclick="setFilter('hormone', this)">Growth hormone</button>
+      <button class="filter-btn" onclick="setFilter('immune', this)">Immune</button>
+    </div>
+    <div style="display:flex; align-items:center; gap:12px;">
+      <span class="results-count" id="resultsCount">10 peptides</span>
+      <select class="sort-select" onchange="handleSort(this.value)">
+        <option value="default">Sort: Default</option>
+        <option value="science">Science Score</option>
+        <option value="community">Community Score</option>
+        <option value="name">Name A–Z</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="peptides-grid" id="peptidesGrid"></div>
+
+  <div class="no-results" id="noResults" style="display:none;">
+    <div class="no-results-icon">🔬</div>
+    <h3>No peptides found</h3>
+    <p>Try a different search term or clear the filter</p>
+  </div>
+
+  <!-- COMING SOON -->
+  <div class="coming-soon-section">
+    <div class="coming-soon-label">Coming soon</div>
+    <div class="coming-soon-grid">
+      <span class="coming-soon-pill">PT-141</span>
+      <span class="coming-soon-pill">Epithalon</span>
+      <span class="coming-soon-pill">Sermorelin</span>
+      <span class="coming-soon-pill">KPV</span>
+      <span class="coming-soon-pill">Tesamorelin</span>
+      <span class="coming-soon-pill">Hexarelin</span>
+      <span class="coming-soon-pill">IGF-1 LR3</span>
+      <span class="coming-soon-pill">Dihexa</span>
+      <span class="coming-soon-pill">SS-31</span>
+      <span class="coming-soon-pill">5-Amino-1MQ</span>
+      <span class="coming-soon-pill">Argireline</span>
+      <span class="coming-soon-pill">Matrixyl</span>
+      <span class="coming-soon-pill">LL-37</span>
+      <span class="coming-soon-pill">DSIP</span>
+      <span class="coming-soon-pill">Follistatin</span>
+    </div>
+  </div>
+
+</div>
+
+<div style="height:1px; background:var(--border); max-width:1100px; margin:0 auto;"></div>
+<footer>
+  <a href="/" class="footer-logo">Pep<span>Cover</span></a>
+  <ul class="footer-links">
+    <li><a href="/peptides.html">Peptides</a></li>
+    <li><a href="/regulation.html">Regulation</a></li>
+    <li><a href="/about.html">About</a></li>
+  </ul>
+  <p class="footer-copy">© 2026 PepCover. Not medical advice.</p>
+</footer>
+
+<script>
+const allPeptides = [
+  {
+    name: "BPC-157", aka: "Body Protection Compound", slug: "bpc-157",
+    desc: "Synthetic peptide studied for tissue repair, gut healing, and tendon recovery.",
+    scienceScore: 4, communityScore: 78,
+    tags: ["Recovery", "Gut health", "Tendons"],
+    categories: ["recovery"],
+    status: "pending", statusLabel: "Reclassification Pending", statusClass: "legal-pending"
+  },
+  {
+    name: "TB-500", aka: "Thymosin Beta-4 Fragment", slug: "tb-500",
+    desc: "Studied for muscle repair, flexibility, and recovery from injury. Extensively used in veterinary medicine.",
+    scienceScore: 4, communityScore: 72,
+    tags: ["Muscle repair", "Recovery", "Flexibility"],
+    categories: ["recovery"],
+    status: "pending", statusLabel: "Reclassification Pending", statusClass: "legal-pending"
+  },
+  {
+    name: "GHK-Cu", aka: "Copper Peptide", slug: "ghk-cu",
+    desc: "Copper-binding peptide researched for skin regeneration, wound healing, and hair growth.",
+    scienceScore: 6, communityScore: 81,
+    tags: ["Anti-aging", "Skin", "Hair growth"],
+    categories: ["antiaging"],
+    status: "pending", statusLabel: "Reclassification Pending", statusClass: "legal-pending"
+  },
+  {
+    name: "CJC-1295", aka: "GHRH Analogue", slug: "cjc-1295",
+    desc: "Growth hormone secretagogue studied for metabolism, sleep quality, and lean muscle.",
+    scienceScore: 5, communityScore: 68,
+    tags: ["Growth hormone", "Sleep", "Metabolism"],
+    categories: ["hormone"],
+    status: "review", statusLabel: "Under PCAC Review", statusClass: "legal-review"
+  },
+  {
+    name: "Ipamorelin", aka: "Growth Hormone Secretagogue", slug: "ipamorelin",
+    desc: "Selective growth hormone secretagogue. Often stacked with CJC-1295 for synergistic effects.",
+    scienceScore: 5, communityScore: 74,
+    tags: ["Growth hormone", "Recovery", "Body composition"],
+    categories: ["hormone", "recovery"],
+    status: "review", statusLabel: "Under PCAC Review", statusClass: "legal-review"
+  },
+  {
+    name: "Semax", aka: "Synthetic ACTH Fragment", slug: "semax",
+    desc: "Neuropeptide approved in Russia. Studied for cognitive enhancement, focus, and neuroprotection.",
+    scienceScore: 6, communityScore: 76,
+    tags: ["Cognitive", "Focus", "Neuroprotection"],
+    categories: ["cognitive"],
+    status: "pending", statusLabel: "Reclassification Pending", statusClass: "legal-pending"
+  },
+  {
+    name: "Selank", aka: "Tuftsin Analogue", slug: "selank",
+    desc: "Anxiolytic peptide approved in Russia. Studied for anxiety reduction and cognitive enhancement.",
+    scienceScore: 5, communityScore: 73,
+    tags: ["Anxiety", "Cognitive", "Immune"],
+    categories: ["cognitive", "immune"],
+    status: "review", statusLabel: "Under PCAC Review", statusClass: "legal-review"
+  },
+  {
+    name: "AOD-9604", aka: "HGH Fragment 176-191", slug: "aod-9604",
+    desc: "HGH fragment studied specifically for fat metabolism. Reached Phase III clinical trials.",
+    scienceScore: 5, communityScore: 61,
+    tags: ["Fat loss", "Metabolism", "Body composition"],
+    categories: ["antiaging"],
+    status: "pending", statusLabel: "Reclassification Pending", statusClass: "legal-pending"
+  },
+  {
+    name: "Thymosin Alpha-1", aka: "Tα1 / Thymalfasin", slug: "thymosin-alpha-1",
+    desc: "Approved in 35+ countries. One of the most clinically validated peptides for immune modulation.",
+    scienceScore: 8, communityScore: 79,
+    tags: ["Immune", "Antiviral", "Longevity"],
+    categories: ["immune"],
+    status: "review", statusLabel: "Under PCAC Review", statusClass: "legal-review"
+  },
+  {
+    name: "MOTS-c", aka: "Mitochondrial Peptide", slug: "mots-c",
+    desc: "Mitochondria-derived peptide discovered in 2015. Studied for energy metabolism and longevity.",
+    scienceScore: 4, communityScore: 65,
+    tags: ["Longevity", "Metabolism", "Energy"],
+    categories: ["antiaging"],
+    status: "pending", statusLabel: "Reclassification Pending", statusClass: "legal-pending"
+  }
+];
+
+let currentFilter = 'all';
+let currentSort = 'default';
+let currentSearch = '';
+
+function getFiltered() {
+  let list = [...allPeptides];
+
+  if (currentSearch) {
+    const q = currentSearch.toLowerCase();
+    list = list.filter(p =>
+      p.name.toLowerCase().includes(q) ||
+      p.aka.toLowerCase().includes(q) ||
+      p.desc.toLowerCase().includes(q) ||
+      p.tags.some(t => t.toLowerCase().includes(q))
+    );
+  }
+
+  if (currentFilter !== 'all') {
+    list = list.filter(p => p.categories.includes(currentFilter));
+  }
+
+  if (currentSort === 'science') {
+    list.sort((a, b) => b.scienceScore - a.scienceScore);
+  } else if (currentSort === 'community') {
+    list.sort((a, b) => b.communityScore - a.communityScore);
+  } else if (currentSort === 'name') {
+    list.sort((a, b) => a.name.localeCompare(b.name));
+  }
+
+  return list;
+}
+
+function render() {
+  const list = getFiltered();
+  const grid = document.getElementById('peptidesGrid');
+  const noResults = document.getElementById('noResults');
+  const count = document.getElementById('resultsCount');
+  const meta = document.getElementById('searchMeta');
+
+  count.textContent = `${list.length} peptide${list.length !== 1 ? 's' : ''}`;
+  meta.textContent = currentSearch
+    ? `${list.length} result${list.length !== 1 ? 's' : ''} for "${currentSearch}"`
+    : `Showing all ${list.length} peptides`;
+
+  if (list.length === 0) {
+    grid.innerHTML = '';
+    noResults.style.display = 'block';
+    return;
+  }
+
+  noResults.style.display = 'none';
+  const scienceColor = s => s >= 7 ? 'green' : 'amber';
+  const communityColor = s => s >= 70 ? 'green' : 'amber';
+
+  grid.innerHTML = list.map(p => `
+    <a href="/peptides/${p.slug}.html" class="peptide-card">
+      <div class="peptide-card-top">
+        <div>
+          <div class="peptide-name">${p.name}</div>
+          <div class="peptide-aka">${p.aka}</div>
+        </div>
+        <span class="legal-badge ${p.statusClass}">${p.statusLabel}</span>
+      </div>
+      <p class="peptide-desc">${p.desc}</p>
+      <div class="peptide-scores">
+        <div class="score-box">
+          <div class="score-box-label">Science Score</div>
+          <div class="score-box-value score-${scienceColor(p.scienceScore)}">${p.scienceScore}/10</div>
+          <div class="score-bar"><div class="score-bar-fill fill-${scienceColor(p.scienceScore)}" style="width:${p.scienceScore * 10}%"></div></div>
+        </div>
+        <div class="score-box">
+          <div class="score-box-label">Community</div>
+          <div class="score-box-value score-${communityColor(p.communityScore)}">${p.communityScore}%</div>
+          <div class="score-bar"><div class="score-bar-fill fill-${communityColor(p.communityScore)}" style="width:${p.communityScore}%"></div></div>
+        </div>
+      </div>
+      <div class="peptide-footer">
+        <div class="peptide-tags">${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+        <span class="peptide-arrow">→</span>
+      </div>
+    </a>
+  `).join('');
+}
+
+function setFilter(filter, btn) {
+  currentFilter = filter;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  render();
+}
+
+function handleSearch() {
+  currentSearch = document.getElementById('searchInput').value.trim();
+  render();
+}
+
+function handleSort(val) {
+  currentSort = val;
+  render();
+}
+
+render();
+</script>
+</body>
+</html>
